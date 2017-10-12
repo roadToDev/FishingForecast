@@ -1,6 +1,7 @@
 import Foundation
 
 class ForecaApiManager {
+ 
     static func parse() {
        
         let urlString = "http://apitest.foreca.net/?lon=30.52&lat=50.43&key=2FdEUT2SIA5oFJR1WTuVMWsC1c&format=json"
@@ -17,12 +18,11 @@ class ForecaApiManager {
                 print("Error")
                 return }
             do {
-                let result = try JSONDecoder().decode(ForecaWeatherForecast.self, from: data)
-                print (result.nineDaysForecast)
-                
-            } catch let error {
+                let parsedData = try JSONDecoder().decode(ForecaWeatherForecast.self, from: data)
+                DataManager.save(data: parsedData.tenDaysForecast)
+                } catch let error {
                     print (error)
-            }
+                }
             
         }.resume()
     }
