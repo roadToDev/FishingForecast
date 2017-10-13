@@ -7,10 +7,38 @@ class DataManager {
         return persistentContainer.viewContext
     }
     
+    static func clearData() {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DailyForecast")
+       
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try DataManager.getContext().execute(batchDeleteRequest)
+        } catch {
+            print (error)
+        }
+        
+    }
+    
     static func save (data: [ForecaDailyForecast]){
         
         data.forEach {parameter in
-            print (parameter.averageCloudiness)
+            
+        let dailyForecast: DailyForecast = NSEntityDescription.insertNewObject(forEntityName: "DailyForecast", into: getContext()) as! DailyForecast
+        
+            dailyForecast.date = parameter.date
+            dailyForecast.cloudinessSymbolCode = parameter.symbolCode
+            dailyForecast.maxTemperature = Int32(parameter.maxTemperature)
+            dailyForecast.minTemperature = Int32(parameter.minTemperature)
+            dailyForecast.precipitationProbability = Int32(parameter.precipitationProbability)
+            dailyForecast.pressure = Int32((parameter.maxPressure + parameter.minPressure) / 2)
+            dailyForecast.sunRise = parameter.sunRise
+            dailyForecast.sunSet = parameter.sunSet
+            dailyForecast.windSpeed = Int32(parameter.windSpeed)
+            dailyForecast.windDirection = parameter.windDirection
+            
+        saveContext()
         }
         
     }
