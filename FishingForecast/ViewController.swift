@@ -8,8 +8,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //ForecaApiManager.parse()
-        DataManager.clearData()
+        ForecaApiManager.parse()
+        //DataManager.clearData()
         
 //        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 //        print (documentsPath)

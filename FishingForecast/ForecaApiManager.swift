@@ -1,6 +1,8 @@
 import Foundation
 
 class ForecaApiManager {
+    
+    static var tenDays = [ForecaDailyForecast]()
  
     static func parse() {
        
@@ -20,6 +22,7 @@ class ForecaApiManager {
             do {
                 let parsedData = try JSONDecoder().decode(ForecaWeatherForecast.self, from: data)
                 DataManager.save(data: parsedData.tenDaysForecast)
+                tenDays = parsedData.tenDaysForecast
                 } catch let error {
                     print (error)
                 }
