@@ -9,6 +9,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         ForecaApiManager.parse()
+        WaterTemperatureManager.waterTemperatureParse()
         //DataManager.clearData()
         
 //        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]

@@ -11,6 +11,9 @@
 		EF3CECD727919F86CCE16F9C /* Pods_FishingForecastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95CF03D95B5138865AEE037 /* Pods_FishingForecastTests.framework */; };
 		FA0B153D1F8B840900726315 /* ForecaWeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B153C1F8B840900726315 /* ForecaWeatherForecast.swift */; };
 		FA0B153F1F8B845600726315 /* ForecaDailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B153E1F8B845600726315 /* ForecaDailyForecast.swift */; };
+		FA36DF191F96134C0075F56D /* DailyForecast+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36DF171F96134C0075F56D /* DailyForecast+CoreDataClass.swift */; };
+		FA36DF1A1F96134C0075F56D /* DailyForecast+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36DF181F96134C0075F56D /* DailyForecast+CoreDataProperties.swift */; };
+		FA36DF1C1F99D41E0075F56D /* WaterTemperatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36DF1B1F99D41E0075F56D /* WaterTemperatureManager.swift */; };
 		FA615C4D1F827943007FAE71 /* ForecaApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA615C4C1F827943007FAE71 /* ForecaApiManager.swift */; };
 		FA718DD91F82719000FB19C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DD81F82719000FB19C1 /* AppDelegate.swift */; };
 		FA718DDB1F82719000FB19C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DDA1F82719000FB19C1 /* ViewController.swift */; };
@@ -19,8 +22,6 @@
 		FA718DE31F82719000FB19C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA718DE21F82719000FB19C1 /* Assets.xcassets */; };
 		FA718DE61F82719000FB19C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA718DE41F82719000FB19C1 /* LaunchScreen.storyboard */; };
 		FA718DF11F82719000FB19C1 /* FishingForecastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DF01F82719000FB19C1 /* FishingForecastTests.swift */; };
-		FADD4E631F8F88AF008CDB3C /* DailyForecast+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD4E611F8F88AF008CDB3C /* DailyForecast+CoreDataClass.swift */; };
-		FADD4E641F8F88AF008CDB3C /* DailyForecast+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD4E621F8F88AF008CDB3C /* DailyForecast+CoreDataProperties.swift */; };
 		FAE36E7A1F8BA05200F1A0C7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE36E791F8BA05200F1A0C7 /* DataManager.swift */; };
 		FAE36E7D1F8BA0F100F1A0C7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE36E7C1F8BA0F100F1A0C7 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,9 @@
 		F95CF03D95B5138865AEE037 /* Pods_FishingForecastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FishingForecastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0B153C1F8B840900726315 /* ForecaWeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecaWeatherForecast.swift; sourceTree = "<group>"; };
 		FA0B153E1F8B845600726315 /* ForecaDailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecaDailyForecast.swift; sourceTree = "<group>"; };
+		FA36DF171F96134C0075F56D /* DailyForecast+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyForecast+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FA36DF181F96134C0075F56D /* DailyForecast+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyForecast+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FA36DF1B1F99D41E0075F56D /* WaterTemperatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTemperatureManager.swift; sourceTree = "<group>"; };
 		FA615C4C1F827943007FAE71 /* ForecaApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecaApiManager.swift; sourceTree = "<group>"; };
 		FA718DD51F82719000FB19C1 /* FishingForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishingForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA718DD81F82719000FB19C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,8 +60,6 @@
 		FA718DEC1F82719000FB19C1 /* FishingForecastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishingForecastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA718DF01F82719000FB19C1 /* FishingForecastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishingForecastTests.swift; sourceTree = "<group>"; };
 		FA718DF21F82719000FB19C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FADD4E611F8F88AF008CDB3C /* DailyForecast+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyForecast+CoreDataClass.swift"; sourceTree = "<group>"; };
-		FADD4E621F8F88AF008CDB3C /* DailyForecast+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyForecast+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FAE36E791F8BA05200F1A0C7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FAE36E7C1F8BA0F100F1A0C7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,8 +107,8 @@
 		FA0B15401F8B852100726315 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FADD4E611F8F88AF008CDB3C /* DailyForecast+CoreDataClass.swift */,
-				FADD4E621F8F88AF008CDB3C /* DailyForecast+CoreDataProperties.swift */,
+				FA36DF171F96134C0075F56D /* DailyForecast+CoreDataClass.swift */,
+				FA36DF181F96134C0075F56D /* DailyForecast+CoreDataProperties.swift */,
 				FA0B153C1F8B840900726315 /* ForecaWeatherForecast.swift */,
 				FA0B153E1F8B845600726315 /* ForecaDailyForecast.swift */,
 			);
@@ -139,6 +141,7 @@
 			children = (
 				FA0B15401F8B852100726315 /* Models */,
 				FAE36E791F8BA05200F1A0C7 /* DataManager.swift */,
+				FA36DF1B1F99D41E0075F56D /* WaterTemperatureManager.swift */,
 				FA718DDA1F82719000FB19C1 /* ViewController.swift */,
 				FA615C4C1F827943007FAE71 /* ForecaApiManager.swift */,
 				FAE36E7B1F8BA0B900F1A0C7 /* SupportFiles */,
@@ -371,14 +374,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA36DF1C1F99D41E0075F56D /* WaterTemperatureManager.swift in Sources */,
 				FA718DE11F82719000FB19C1 /* FishingForecast.xcdatamodeld in Sources */,
 				FA0B153D1F8B840900726315 /* ForecaWeatherForecast.swift in Sources */,
 				FA0B153F1F8B845600726315 /* ForecaDailyForecast.swift in Sources */,
 				FAE36E7A1F8BA05200F1A0C7 /* DataManager.swift in Sources */,
 				FA615C4D1F827943007FAE71 /* ForecaApiManager.swift in Sources */,
-				FADD4E641F8F88AF008CDB3C /* DailyForecast+CoreDataProperties.swift in Sources */,
+				FA36DF1A1F96134C0075F56D /* DailyForecast+CoreDataProperties.swift in Sources */,
 				FA718DDB1F82719000FB19C1 /* ViewController.swift in Sources */,
-				FADD4E631F8F88AF008CDB3C /* DailyForecast+CoreDataClass.swift in Sources */,
+				FA36DF191F96134C0075F56D /* DailyForecast+CoreDataClass.swift in Sources */,
 				FA718DD91F82719000FB19C1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

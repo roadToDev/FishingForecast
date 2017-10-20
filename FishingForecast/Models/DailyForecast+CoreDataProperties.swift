@@ -1,3 +1,12 @@
+//
+//  DailyForecast+CoreDataProperties.swift
+//  FishingForecast
+//
+//  Created by Alex on 10/17/17.
+//  Copyright © 2017 Alex. All rights reserved.
+//
+//
+
 import Foundation
 import CoreData
 
@@ -18,5 +27,6 @@ extension DailyForecast {
     @NSManaged public var sunSet: String?
     @NSManaged public var windDirection: String?
     @NSManaged public var windSpeed: Int32
+    @NSManaged public var moonPhase: Int32
 
 }

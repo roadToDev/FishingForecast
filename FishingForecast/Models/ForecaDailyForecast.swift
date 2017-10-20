@@ -23,9 +23,9 @@ struct ForecaDailyForecast: Decodable {
     var moonRise : String
     var moonSet : String
     var p : Double
-    var mp : Int
+    var moonPhase : Int
     
     private enum CodingKeys : String, CodingKey {
-        case averageCloudiness = "ca", dayLength = "dl", date = "dt", precipitationProbability = "pp", minPressure = "pn", maxPressure = "px", minTemperature = "tn", maxTemperature = "tx", uvIndex = "uv", windDirection = "wn", symbolCode = "s", minHumidity = "rn", maxHumidity = "rx", sunSet = "ss", sunRise = "sr", thunderProbability = "tp", windDirectionInDegrees = "wd", windSpeed = "ws", p, moonRise = "mr", moonSet = "ms", mp
+        case averageCloudiness = "ca", dayLength = "dl", date = "dt", precipitationProbability = "pp", minPressure = "pn", maxPressure = "px", minTemperature = "tn", maxTemperature = "tx", uvIndex = "uv", windDirection = "wn", symbolCode = "s", minHumidity = "rn", maxHumidity = "rx", sunSet = "ss", sunRise = "sr", thunderProbability = "tp", windDirectionInDegrees = "wd", windSpeed = "ws", p, moonRise = "mr", moonSet = "ms", moonPhase = "mp"
     }
 }

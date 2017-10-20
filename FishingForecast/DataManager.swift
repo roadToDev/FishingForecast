@@ -33,6 +33,7 @@ class DataManager {
             dailyForecast.sunSet = parameter.sunSet
             dailyForecast.windSpeed = Int32(parameter.windSpeed)
             dailyForecast.windDirection = parameter.windDirection
+            dailyForecast.moonPhase = Int32(parameter.moonPhase)
             
         saveContext()
         }
@@ -43,10 +44,9 @@ class DataManager {
             
         data.forEach { parameter in
         
-            print(String(parameter.date) + String(parameter.mp))
+            print(String(parameter.date) + String(parameter.moonPhase))
             
         }
-        
     }
     
     // MARK: - Core Data stack
