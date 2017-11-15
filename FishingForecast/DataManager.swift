@@ -17,7 +17,7 @@ class DataManager {
         
     }
     
-    static func save (data: [ForecaDailyForecast]){
+    static func saveWeatherForecast (data: [ForecaDailyForecast]){
         show(data: data)
         data.forEach {parameter in
             

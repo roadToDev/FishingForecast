@@ -21,7 +21,7 @@ class ForecaApiManager {
                 return }
             do {
                 let parsedData = try JSONDecoder().decode(ForecaWeatherForecast.self, from: data)
-                DataManager.save(data: parsedData.tenDaysForecast)
+                DataManager.saveWeatherForecast(data: parsedData.tenDaysForecast)
                 tenDays = parsedData.tenDaysForecast
                 } catch let error {
                     print (error)

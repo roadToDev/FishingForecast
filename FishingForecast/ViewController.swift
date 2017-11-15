@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         animateTable()
         
-       // ForecaApiManager.parse()
+        ForecaApiManager.parse()
        // WaterTemperatureManager.waterTemperatureParse()
         //DataManager.clearData()
         
