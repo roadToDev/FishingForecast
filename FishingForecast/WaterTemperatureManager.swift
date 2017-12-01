@@ -3,9 +3,9 @@ import SwiftSoup
 
 struct WaterTemperatureManager {
     
-    static var waterTemperature = ""
+    var waterTemperature = ""
     
-    static func waterTemperatureParse() {
+    mutating func waterTemperatureParse() {
         
         var html = ""
         
@@ -37,7 +37,7 @@ struct WaterTemperatureManager {
             }
     }
     
-    private static func getWaterTemperature(_ string : String) {
+    mutating func getWaterTemperature(_ string : String) {
             if let endIndex = string.range(of: "°")?.lowerBound {
                 waterTemperature = String(string[..<endIndex])
             } else { return }

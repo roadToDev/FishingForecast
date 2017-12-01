@@ -10,7 +10,7 @@ import UIKit
 
 class DatesCollectionViewCell: UICollectionViewCell {
     
-   @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var dateButton: UIButton!
     
     @IBOutlet weak var lineImage: UIImageView!
     

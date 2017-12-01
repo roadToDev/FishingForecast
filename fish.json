@@ -1,0 +1,28 @@
+{
+  "fishes": [
+             {
+             "name": "amur",
+             "type": 1,
+             "waterType": 1,
+             "waterTemperature": [9, 30],
+             "description": "Here is Some description",
+             "baitAndTackle": "This fish is in the ocean"
+             },
+             {
+             "name": "amur",
+             "type": 1,
+             "waterType": 1,
+             "waterTemperature": [9, 30],
+             "description": "Here is Some description",
+             "baitAndTackle": "This fish is in the ocean"
+             },
+             {
+             "name": "amur",
+             "type": 1,
+             "waterType": 1,
+             "waterTemperature": [9, 30],
+             "description": "Here is Some description",
+             "baitAndTackle": "This fish is in the ocean"
+             }
+  ]
+}

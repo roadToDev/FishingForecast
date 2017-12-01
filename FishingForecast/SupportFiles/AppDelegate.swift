@@ -1,11 +1,4 @@
 //
-//  AppDelegate.swift
-//  FishingForecast
-//
-//  Created by Alex on 10/2/17.
-//  Copyright © 2017 Alex. All rights reserved.
-//
-
 import UIKit
 import CoreData
 
@@ -13,7 +6,21 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    func showDataError(){
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let errorView = mainStoryBoard.instantiateViewController(withIdentifier: "ErrorViewController") as! ErrorViewController
+        
+        window?.rootViewController = errorView
+        window?.makeKeyAndVisible()
+    }
+    func showNetworkError(){
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let errorView = mainStoryBoard.instantiateViewController(withIdentifier: "ErrorViewController") as! ErrorViewController
+        
+        window?.rootViewController = errorView
+        window?.makeKeyAndVisible()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
