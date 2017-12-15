@@ -7,7 +7,7 @@ struct FishingForecastAPI {
     let imageManager = ImageManager()
     let dateManager = DateManager()
     let waterTemperatureManager = WaterTemperatureManager()
-    let forecaApiManager = ForecaApiManager()
+    var forecaApiManager = ForecaApiManager()
     let fishManager = FishManager()
   //  let biteLevelManager = BiteLevelManager(forecast: <#T##DailyForecast#>, fish: <#T##Fish#>)
     
@@ -24,48 +24,46 @@ struct FishingForecastAPI {
     }
     
     func showError() {
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.showDataError()
-        
     }
     
     func getDailyForecast() -> [WeatherForecast]? {
-        
-        switch hasConnection() {
-        case true:
-            if !dataManager.hasData(){
-              //  dataManager.saveWeatherForecast(data: forecaApiManager.parse()!)
-            } else {
-                
-            }
-        case false:
-            if dataManager.hasData(){
-                return dataManager.loadDailyForecast()
-            } else {
-                return forecaApiManager.getParsedWeatherForecast()
-            }
-        }        
-        
-        
-      //  if (hasData() && getFirstDayDate() != data[0].date) || !hasData() {
-        
-        
-        
-        
-      //  forecaApiManager.parse()
         return dataManager.loadDailyForecast()
+    }
+    
+    func clearData() {
+        dataManager.clear()
+    }
+    
+    func saveData(data: [WeatherForecast]) {
+        dataManager.save(data: data)
+    }
+    
+    func parseDailyForecast(completion: @escaping ([WeatherForecast]) -> ()){
+        forecaApiManager.parse { (success, response, error) in
+            if success {
+                var dailyForecast = [WeatherForecast]()
+                guard let parsedData = response else { return }
+                parsedData.forEach({ parameter in
+                    
+                    let dailyWeatherForecast = WeatherForecast(cloudinessSymbolCode: parameter.symbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: Int32((parameter.minPressure + parameter.maxPressure) / 2), sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase))
+                    
+                    dailyForecast.append(dailyWeatherForecast)
+                })
+                DispatchQueue.main.async {
+                    completion(dailyForecast)
+                }
+            }
+        }
+    }
+   
+    func hasData() -> Bool {
+        return dataManager.hasData()
     }
     
     func format(fromDate: String) -> String{
         return dateManager.format(fromDate: fromDate)
     }
-    
-//    func saveToCoreData(){
-//        forecaApiManager.parse()
-//        if forecaApiManager.tenDays[0].date != dataManager.getFirstDayDate() {
-//            dataManager.saveWeatherForecast(data: forecaApiManager.tenDays)
-//        }
-//    }
-    
 }
+

@@ -1,15 +1,13 @@
 import Foundation
 
-struct ForecaApiManager {
-     
-    func parse() -> [ForecaDailyForecast]? {
+class ForecaApiManager {
+    
+    func parse(completion: @escaping (Bool, [ForecaDailyForecast]?, Error?) -> ()){
         
-        var dailyForecast = [ForecaDailyForecast]()
-       
         let urlString = "http://apitest.foreca.net/?lon=30.52&lat=50.43&key=2FdEUT2SIA5oFJR1WTuVMWsC1c&format=json"
         guard let url = URL(string: urlString) else {
             print("Error: \(urlString) not a valid URL")
-            return nil }
+            return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             
@@ -20,27 +18,36 @@ struct ForecaApiManager {
                 print("Error")
                 return }
             do {
-                let parsedData = try JSONDecoder().decode(ForecaWeatherForecast.self, from: data)
-                dailyForecast = parsedData.tenDaysForecast
+                    let parsedData = try JSONDecoder().decode(ForecaWeatherForecast.self, from: data)
+                    let dailyForecast = parsedData.tenDaysForecast
+                    DispatchQueue.main.async {
+                       completion(true, dailyForecast, nil)
+                    }
                 } catch let error {
                     print (error)
+                 //   completion(false, nil, error)
                 }
-            
         }.resume()
-        return dailyForecast
     }
     
-    func getParsedWeatherForecast() -> [WeatherForecast]{
-        var tenDaysForecast = [WeatherForecast]()
-        let parsedData = parse()
-        
-        parsedData!.forEach { parameter in
-            
-            let forecast = WeatherForecast(cloudinessSymbolCode: parameter.symbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: Int32((parameter.maxPressure + parameter.minPressure) / 2), sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase))
-            
-            tenDaysForecast.append(forecast)
-        }
-        return tenDaysForecast
-    }
-    
+//    func getParsedWeatherForecast() -> [WeatherForecast]?{
+//        var tenDaysForecast = [WeatherForecast]()
+//        var parsedData = [ForecaDailyForecast]()
+//        parse { (success, response, error) in
+//            if success {
+//                guard let data = response as? [ForecaDailyForecast] else { return }
+//                parsedData = data
+//            }
+//        }
+//
+//        parsedData.forEach { parameter in
+//            print ("I'm here")
+//            let forecast = WeatherForecast(cloudinessSymbolCode: parameter.symbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: Int32((parameter.maxPressure + parameter.minPressure) / 2), sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase))
+//
+//            tenDaysForecast.append(forecast)
+//        }
+//      //  print(tenDaysForecast[0])
+//        return tenDaysForecast
+//
+//    }
 }

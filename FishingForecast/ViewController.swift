@@ -7,7 +7,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var tableView: UITableView!
     
+    var dailyForecast : [WeatherForecast]?
+    
     let fishingForecastAPI = FishingForecastAPI()
+    let dataManager = DataManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +22,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.tableView.delegate = self
         self.tableView.dataSource = self
                 
-        
+        fetchData()
         animateTable()
+       // ForecaApiManager.parse()
         
+      //////  dataManager.saveWeatherForecast()
      //   fishingForecastAPI.showForecaApiParsed()
         print(fishingForecastAPI.hasConnection())
       //  fishingForecastAPI.test()
@@ -38,8 +44,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
        // WaterTemperatureManager.waterTemperatureParse()
         //DataManager.clearData()
         
-     //   let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-    //    print (documentsPath)
+//let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+//print (documentsPath)
         
 //        let fetchRequest: NSFetchRequest<DailyForecast> = DailyForecast.fetchRequest()
 //
@@ -54,9 +60,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func fetchData(){
+        
+        switch fishingForecastAPI.hasConnection() {
+        case true:
+            fishingForecastAPI.parseDailyForecast(completion: { forecast in
+                self.dailyForecast = forecast
+                self.collectionView.reloadData()
+                self.fishingForecastAPI.clearData()
+                self.fishingForecastAPI.saveData(data: forecast)
+            })
+            
+        case false:
+            if fishingForecastAPI.hasData() {
+                dailyForecast = fishingForecastAPI.getDailyForecast()
+            } else {
+                fishingForecastAPI.showError()
+            }
+        }
     }
     
     let array = ["21.09", "22.09", "23.09", "24.09", "25.09", "26.09", "27.09", "28.09", "29.09", "30.09"]
@@ -64,15 +85,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     // MARK: - CollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let forecast = fishingForecastAPI.getDailyForecast()!
-        print(forecast.count)
-        return (forecast.count)
+        print(dailyForecast?.count)
+        return dailyForecast?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colcell", for: indexPath) as! DatesCollectionViewCell
-        let forecast = fishingForecastAPI.getDailyForecast()!
-        cell.dateButton.setTitle(fishingForecastAPI.format(fromDate: forecast[indexPath.row].date!) , for: .normal)
+        
+        let forecast = dailyForecast
+        cell.dateButton.setTitle(fishingForecastAPI.format(fromDate: forecast![indexPath.row].date!) , for: .normal)
         
         let lastItemIndex = array.count - 1
         if indexPath.row == lastItemIndex {

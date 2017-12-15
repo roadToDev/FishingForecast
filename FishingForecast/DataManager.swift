@@ -3,7 +3,9 @@ import CoreData
 
 struct DataManager {
     
-    func clearData() {
+    let apiManager = ForecaApiManager()
+    
+    func clear() {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DailyForecast")
         
@@ -18,74 +20,114 @@ struct DataManager {
     }
     
     func hasData() -> Bool {
-        let data = loadDailyForecast()
-        if data.count > 0 {
-            return true
-        } else {
+        guard loadDailyForecast() != nil else {
             return false
         }
+        return true
     }
     
-    func getFirstDayDate() -> String? {
-        if hasData() {
-            return loadDailyForecast()[0].date
-        }
-        return nil
-    }
+    //    func loadFirstDayDate() -> String? {
+    //        if hasData() {
+    //            return loadDailyForecast()[0].date
+    //        }
+    //        return nil
+    //    }
     
-    func saveWeatherForecast (data: [WeatherForecast]){
+    func save(data: [WeatherForecast]){
         
-        data.forEach { parameter in
-
-                let dailyForecast: DailyForecast = NSEntityDescription.insertNewObject(forEntityName: "DailyForecast", into: DataManager.getContext()) as! DailyForecast
-
-                dailyForecast.date = parameter.date
-                dailyForecast.cloudinessSymbolCode = parameter.cloudinessSymbolCode
-                dailyForecast.maxTemperature = Int32(parameter.maxTemperature)
-                dailyForecast.minTemperature = Int32(parameter.minTemperature)
-                dailyForecast.precipitationProbability = Int32(parameter.precipitationProbability)
-                dailyForecast.pressure = parameter.pressure
-                dailyForecast.sunRise = parameter.sunRise
-                dailyForecast.sunSet = parameter.sunSet
-                dailyForecast.windSpeed = Int32(parameter.windSpeed)
-                dailyForecast.windDirection = parameter.windDirection
-                dailyForecast.moonPhase = Int32(parameter.moonPhase)
-
-                DataManager.saveContext()
-            }
-    }
-    
-    func loadDailyForecast() -> [WeatherForecast] {
-        var tenDaysForecast = [WeatherForecast]()
-        let fetchedData : [DailyForecast]
-        let fetchRequest: NSFetchRequest<DailyForecast> = DailyForecast.fetchRequest()
-        
-        do {
-            fetchedData = try DataManager.getContext().fetch(fetchRequest)
-            fetchedData.forEach{ parameter in
-            let dailyWeatherForecast = WeatherForecast(cloudinessSymbolCode: parameter.cloudinessSymbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: parameter.pressure, sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase))
-                tenDaysForecast.append(dailyWeatherForecast)
-            }
-        } catch {
-            print (error)
-        }
-        return tenDaysForecast
-    }
-    
-    private func fetchData() -> [DailyForecast]{
-        
-        let fetchRequest: NSFetchRequest<DailyForecast> = DailyForecast.fetchRequest()
-        
-        do {
-            let tenDaysForecast = try DataManager.getContext().fetch(fetchRequest)
+        data.forEach({ forecast in
             
-            return tenDaysForecast
+            let dailyForecast: DailyForecast = NSEntityDescription.insertNewObject(forEntityName: "DailyForecast", into: DataManager.getContext()) as! DailyForecast
+            
+            dailyForecast.date = forecast.date
+            dailyForecast.cloudinessSymbolCode = forecast.cloudinessSymbolCode
+            dailyForecast.maxTemperature = Int32(forecast.maxTemperature)
+            dailyForecast.minTemperature = Int32(forecast.minTemperature)
+            dailyForecast.precipitationProbability = Int32(forecast.precipitationProbability)
+            dailyForecast.pressure = forecast.pressure
+            dailyForecast.sunRise = forecast.sunRise
+            dailyForecast.sunSet = forecast.sunSet
+            dailyForecast.windSpeed = Int32(forecast.windSpeed)
+            dailyForecast.windDirection = forecast.windDirection
+            dailyForecast.moonPhase = Int32(forecast.moonPhase)
+            
+            DataManager.saveContext()
+        })
+    }
+    
+    
+    
+    
+    func loadDailyForecast() -> [WeatherForecast]? {
+        
+        var dailyForecast = [WeatherForecast]()
+        let fetchRequest: NSFetchRequest<DailyForecast> = DailyForecast.fetchRequest()
+        
+        do {
+            let fetchedData = try DataManager.getContext().fetch(fetchRequest)
+            fetchedData.forEach{ parameter in
+                let dailyWeatherForecast = WeatherForecast(cloudinessSymbolCode: parameter.cloudinessSymbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: parameter.pressure, sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase))
+                dailyForecast.append(dailyWeatherForecast)
+            }
         } catch {
             print (error)
         }
-        return []
-        
+        return dailyForecast
     }
+    
+    //    func saveWeatherForecast (data: [WeatherForecast]){
+    //
+    //        data.forEach { parameter in
+    //
+    //                let dailyForecast: DailyForecast = NSEntityDescription.insertNewObject(forEntityName: "DailyForecast", into: DataManager.getContext()) as! DailyForecast
+    //
+    //                dailyForecast.date = parameter.date
+    //                dailyForecast.cloudinessSymbolCode = parameter.cloudinessSymbolCode
+    //                dailyForecast.maxTemperature = Int32(parameter.maxTemperature)
+    //                dailyForecast.minTemperature = Int32(parameter.minTemperature)
+    //                dailyForecast.precipitationProbability = Int32(parameter.precipitationProbability)
+    //                dailyForecast.pressure = parameter.pressure
+    //                dailyForecast.sunRise = parameter.sunRise
+    //                dailyForecast.sunSet = parameter.sunSet
+    //                dailyForecast.windSpeed = Int32(parameter.windSpeed)
+    //                dailyForecast.windDirection = parameter.windDirection
+    //                dailyForecast.moonPhase = Int32(parameter.moonPhase)
+    //
+    //                DataManager.saveContext()
+    //            }
+    //    }
+    
+    //    func loadDailyForecast() -> [WeatherForecast] {
+    //        var tenDaysForecast = [WeatherForecast]()
+    //        let fetchedData : [DailyForecast]
+    //        let fetchRequest: NSFetchRequest<DailyForecast> = DailyForecast.fetchRequest()
+    //
+    //        do {
+    //            fetchedData = try DataManager.getContext().fetch(fetchRequest)
+    //            fetchedData.forEach{ parameter in
+    //            let dailyWeatherForecast = WeatherForecast(cloudinessSymbolCode: parameter.cloudinessSymbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: parameter.pressure, sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase))
+    //                tenDaysForecast.append(dailyWeatherForecast)
+    //            }
+    //        } catch {
+    //            print (error)
+    //        }
+    //        return tenDaysForecast
+    //    }
+    
+    //    private func fetchData() -> [DailyForecast]{
+    //
+    //        let fetchRequest: NSFetchRequest<DailyForecast> = DailyForecast.fetchRequest()
+    //
+    //        do {
+    //            let tenDaysForecast = try DataManager.getContext().fetch(fetchRequest)
+    //
+    //            return tenDaysForecast
+    //        } catch {
+    //            print (error)
+    //        }
+    //        return []
+    //
+    //    }
     
     static func show (data: [ForecaDailyForecast]) {
         
@@ -108,7 +150,7 @@ struct DataManager {
     
     // MARK: - Core Data stack
     
-        static func getContext () -> NSManagedObjectContext {
+    static func getContext () -> NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     

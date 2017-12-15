@@ -1,11 +1,3 @@
-//
-//  WeatherForecast.swift
-//  FishingForecast
-//
-//  Created by Alex on 11/30/17.
-//  Copyright © 2017 Alex. All rights reserved.
-//
-
 import Foundation
 
 struct WeatherForecast {
