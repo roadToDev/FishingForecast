@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -160,26 +161,26 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="tUr-yH-mSg">
                                 <rect key="frame" x="10" y="167" width="300" height="49"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="d9S-7a-WLA">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.5" height="49"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="d9S-7a-WLA">
+                                        <rect key="frame" x="0.0" y="0.0" width="119" height="49"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xJi-jA-x8w">
-                                                <rect key="frame" x="0.0" y="0.0" width="127.5" height="26"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="26"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="winddirection" translatesAutoresizingMaskIntoConstraints="NO" id="Av6-BP-X5o">
                                                         <rect key="frame" x="0.0" y="0.0" width="19" height="26"/>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0Nw-gI-Fuu">
-                                                        <rect key="frame" x="29" y="0.0" width="98.5" height="26"/>
+                                                        <rect key="frame" x="29" y="0.0" width="66.5" height="26"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ветер 15 м/с" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8J8-WG-7Xe">
-                                                                <rect key="frame" x="0.0" y="0.0" width="98.5" height="13"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="13"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                                                 <color key="textColor" red="0.99603396654129028" green="0.99217647314071655" blue="0.99198061227798462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Северо-восточный" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4I-ZH-fQB">
-                                                                <rect key="frame" x="0.0" y="13" width="98.5" height="13"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Северный" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4I-ZH-fQB">
+                                                                <rect key="frame" x="0.0" y="13" width="66.5" height="13"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                                                 <color key="textColor" red="0.99603396654129028" green="0.99217647314071655" blue="0.99198061227798462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -189,13 +190,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="mQb-c4-VO5">
-                                                <rect key="frame" x="0.0" y="26" width="127.5" height="23"/>
+                                                <rect key="frame" x="0.0" y="26" width="119" height="23"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="pressure" translatesAutoresizingMaskIntoConstraints="NO" id="Nik-Jg-8wg">
                                                         <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Давление 748 мм" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lg-WP-EYO">
-                                                        <rect key="frame" x="29" y="0.0" width="98.5" height="23"/>
+                                                        <rect key="frame" x="29" y="0.0" width="90" height="23"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                                         <color key="textColor" red="0.99603396654129028" green="0.99217647314071655" blue="0.99198061227798462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -227,7 +228,7 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moonphase" translatesAutoresizingMaskIntoConstraints="NO" id="tsm-KS-pdd">
                                                         <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Четвертая четверть" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UX4-x5-yJN">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Прибывающая луна" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UX4-x5-yJN">
                                                         <rect key="frame" x="25" y="0.0" width="145" height="19"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -457,8 +458,21 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="vQu-e5-pIx" id="sbY-CU-MFB"/>
+                        <outlet property="cloudnessImageView" destination="nr5-oo-AMt" id="jwx-3k-gw0"/>
                         <outlet property="collectionView" destination="VdS-kB-KtM" id="aiI-Ln-WWQ"/>
+                        <outlet property="dateLabel" destination="2ZO-pv-Crj" id="7qi-69-qRF"/>
+                        <outlet property="moonPhaseLabel" destination="UX4-x5-yJN" id="aLd-34-Mde"/>
+                        <outlet property="nightTemperatureLabel" destination="q9D-Uu-zZ6" id="FHy-rZ-AVw"/>
+                        <outlet property="precipitationProbabilityLabel" destination="ZMR-gx-exM" id="9y0-6S-Abe"/>
+                        <outlet property="pressureLabel" destination="2lg-WP-EYO" id="ELd-eJ-btf"/>
+                        <outlet property="sunRiseLabel" destination="BD4-lY-6uk" id="pPW-67-c29"/>
+                        <outlet property="sunSetLabel" destination="q8D-8R-zf2" id="OXo-2U-6Xc"/>
                         <outlet property="tableView" destination="aRj-kp-3oM" id="fL7-3Y-yoR"/>
+                        <outlet property="temperatureLabel" destination="zGw-NA-oFC" id="mTU-rY-uym"/>
+                        <outlet property="waterTemperatureLabel" destination="Vzq-4y-SfZ" id="iaT-u7-ysC"/>
+                        <outlet property="windDirectionLabel" destination="n4I-ZH-fQB" id="hbI-Vw-MOh"/>
+                        <outlet property="windSpeedLabel" destination="8J8-WG-7Xe" id="b3x-2o-Ai8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

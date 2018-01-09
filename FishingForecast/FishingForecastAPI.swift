@@ -11,6 +11,34 @@ struct FishingForecastAPI {
     let fishManager = FishManager()
   //  let biteLevelManager = BiteLevelManager(forecast: <#T##DailyForecast#>, fish: <#T##Fish#>)
     
+    func showWaterTemp(data: [WeatherForecast]){
+       let array = waterTemperatureManager.getWaterTemperature(data: data)
+        array?.forEach({ (element) in
+            print(element)
+        })
+    }
+    
+    func getMoonPhaseBy(degrees: Int32) -> String {
+        var phase = ""
+        Constants.moonPhases.forEach { moonPhase in
+            if moonPhase.key ~= Int(degrees) {
+                phase = moonPhase.value
+            }
+        }
+        return phase
+    }
+    
+    func convertToMmFrom(pascals: Int32) -> String {
+        return String(Int(Double(pascals) * 0.75006375541921))
+    }
+    
+    func getImageBy(symbolCode: String) -> UIImage {
+        return imageManager.getWeatherImageBy(symbolCode).image
+    }
+    
+    func getWaterTemperature() {
+    //    print(waterTemperatureManager.getWaterTemperature() ?? "Hello")
+    }
     
     func getFish() -> [Fish]?{
         return fishManager.getFish()
@@ -28,7 +56,7 @@ struct FishingForecastAPI {
         appDelegate.showDataError()
     }
     
-    func getDailyForecast() -> [WeatherForecast]? {
+    func loadDailyForecast() -> [WeatherForecast]? {
         return dataManager.loadDailyForecast()
     }
     
@@ -43,6 +71,7 @@ struct FishingForecastAPI {
     func parseDailyForecast(completion: @escaping ([WeatherForecast]) -> ()){
         forecaApiManager.parse { (success, response, error) in
             if success {
+                //Need waterTemperatureParse here
                 var dailyForecast = [WeatherForecast]()
                 guard let parsedData = response else { return }
                 parsedData.forEach({ parameter in

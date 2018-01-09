@@ -3,6 +3,39 @@ import CoreData
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var cityButton: UIButton!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var temperatureLabel: UILabel!
+    
+    @IBOutlet weak var nightTemperatureLabel: UILabel!
+    
+    @IBOutlet weak var waterTemperatureLabel: UILabel!
+    
+    @IBOutlet weak var sunRiseLabel: UILabel!
+    
+    @IBOutlet weak var sunSetLabel: UILabel!
+    
+    @IBOutlet weak var cloudnessImageView: UIImageView!
+    
+    @IBOutlet weak var windSpeedLabel: UILabel!
+    
+    @IBOutlet weak var windDirectionLabel: UILabel!
+    
+    @IBOutlet weak var pressureLabel: UILabel!
+    
+    @IBOutlet weak var precipitationProbabilityLabel: UILabel!
+    
+    @IBOutlet weak var moonPhaseLabel: UILabel!
+    
+    
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -28,6 +61,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
       //////  dataManager.saveWeatherForecast()
      //   fishingForecastAPI.showForecaApiParsed()
+        //fishingForecastAPI.getWaterTemperature()
         print(fishingForecastAPI.hasConnection())
       //  fishingForecastAPI.test()
         
@@ -65,19 +99,49 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         switch fishingForecastAPI.hasConnection() {
         case true:
             fishingForecastAPI.parseDailyForecast(completion: { forecast in
+                self.show(data: forecast, date: forecast[0].date!)
                 self.dailyForecast = forecast
                 self.collectionView.reloadData()
                 self.fishingForecastAPI.clearData()
                 self.fishingForecastAPI.saveData(data: forecast)
+                self.fishingForecastAPI.showWaterTemp(data: forecast)
             })
             
         case false:
             if fishingForecastAPI.hasData() {
-                dailyForecast = fishingForecastAPI.getDailyForecast()
+                dailyForecast = fishingForecastAPI.loadDailyForecast()
             } else {
                 fishingForecastAPI.showError()
             }
         }
+    }
+    
+    func show(data: [WeatherForecast], date: String){
+        
+        data.forEach { forecast in
+            if forecast.date == date {
+                cityButton.titleLabel?.text = "Киев"
+                dateLabel.text = forecast.date
+                temperatureLabel.text = addPlusSignIfPlusTemperature(to: forecast.maxTemperature)
+                nightTemperatureLabel.text = Constants.MainViewText.nightTemperature + addPlusSignIfPlusTemperature(to: forecast.minTemperature)
+                waterTemperatureLabel.text = Constants.MainViewText.waterTemperature + String(3)
+                sunRiseLabel.text = forecast.sunRise
+                sunSetLabel.text = forecast.sunSet
+                cloudnessImageView.image = fishingForecastAPI.getImageBy(symbolCode: forecast.cloudinessSymbolCode!)
+                windSpeedLabel.text = Constants.MainViewText.wind + String(forecast.windSpeed) + Constants.MainViewText.ms
+                windDirectionLabel.text = Constants.MainViewText.windDirection[forecast.windDirection!]
+                pressureLabel.text = Constants.MainViewText.pressure + fishingForecastAPI.convertToMmFrom(pascals: forecast.pressure)  + Constants.MainViewText.mm
+                precipitationProbabilityLabel.text = Constants.MainViewText.precipitationProbability + String(forecast.precipitationProbability) + " %"
+                moonPhaseLabel.text = fishingForecastAPI.getMoonPhaseBy(degrees: forecast.moonPhase)
+            }
+        }
+        
+    }
+    func addPlusSignIfPlusTemperature(to temperature: Int32) -> String {
+        if temperature > 0 {
+            return "+\(temperature)"
+        }
+        return String(temperature)
     }
     
     let array = ["21.09", "22.09", "23.09", "24.09", "25.09", "26.09", "27.09", "28.09", "29.09", "30.09"]
