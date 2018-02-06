@@ -11,14 +11,14 @@ import XCTest
 
 class DateManagerTests: XCTestCase {
     
-    
+    let dateManager = DateManager()
     
     func test_getMonthBy_ShouldGetNameOfMonthByStringDate() {
         
         let stringDate = "2017-10-15"
         
         let expected = "октября"
-        XCTAssertEqual(DateManager.getMonthBy(string: stringDate), expected)
+        XCTAssertEqual(dateManager.getMonthBy(string: stringDate), expected)
         
     }
     
@@ -29,7 +29,7 @@ class DateManagerTests: XCTestCase {
         let expectedMonth = 11
         let expectedDay = 14
         
-        let date = DateManager.getDateBy(string: stringDate)!
+        let date = dateManager.getDateBy(string: stringDate)!
         let calendar = Calendar.current
         
         XCTAssertEqual(calendar.component(.year, from: date), expectedYear)

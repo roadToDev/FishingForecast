@@ -22,4 +22,17 @@ struct FishManager {
         
         return fish
     }
+    
+    func getFishBy(type: Int, fish: [Fish]) -> [Fish]? {
+        var typedFishArray = [Fish]()
+        fish.forEach { item in
+            if item.type == type {
+                typedFishArray.append(item)
+            }
+        }
+        if typedFishArray.count != 0 {
+            return typedFishArray
+        }
+        return nil
+    }
 }

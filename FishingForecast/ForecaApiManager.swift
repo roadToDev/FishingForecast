@@ -2,9 +2,8 @@ import Foundation
 
 class ForecaApiManager {
     
-    func parse(completion: @escaping (Bool, [ForecaDailyForecast]?, Error?) -> ()){
+    func parse(_ urlString : String, completion: @escaping (Bool, [ForecaDailyForecast]?, Error?) -> ()){
         
-        let urlString = "http://apitest.foreca.net/?lon=30.52&lat=50.43&key=2FdEUT2SIA5oFJR1WTuVMWsC1c&format=json"
         guard let url = URL(string: urlString) else {
             print("Error: \(urlString) not a valid URL")
             return}

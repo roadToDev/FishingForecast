@@ -14,7 +14,4 @@ class DatesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var lineImage: UIImageView!
     
-    @IBAction func dayChange(_ sender: UIButton) {
-        print ("Push!")
-    }        
 }

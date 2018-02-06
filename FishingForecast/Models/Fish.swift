@@ -5,7 +5,12 @@ struct Fish: Decodable {
     var name: String
     var type: Int
     var waterType: Int
-    var waterTemperature: [Int]
+    var minWaterTemperature: Int
+    var maxWaterTemperature: Int
+    var springWaterTemperature: [Int]
+    var summerWaterTemperature: [Int]
+    var autumnWaterTemperature: [Int]
+    var winterWaterTemperature: [Int]
     var description: String
     var baitAndTackle: String
     

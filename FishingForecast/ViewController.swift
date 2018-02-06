@@ -31,19 +31,44 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     
+    @IBAction func showLocationPopUp(_ sender: UIButton) {
+        let popOverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "locationPopUp") as! LocationViewController
+        
+        self.addChildViewController(popOverViewController)
+        popOverViewController.view.frame = self.view.frame
+        self.view.addSubview(popOverViewController.view)
+        popOverViewController.didMove(toParentViewController: self)
+    }
     
+    @IBAction func predatoryButtonTapped(_ sender: UIButton) {
+        if fishType == Constants.peacefullFishNumber {
+            fishType = Constants.predatoryFishNumber
+            self.tableView.reloadData()
+            animateTable()
+        }
+    }
     
-    
-    
+    @IBAction func peacefullButtonTapped(_ sender: UIButton) {
+        if fishType == Constants.predatoryFishNumber {
+            fishType = Constants.peacefullFishNumber
+            self.tableView.reloadData()
+            animateTable()
+        }
+    }    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var tableView: UITableView!
     
-    var dailyForecast : [WeatherForecast]?
-    
+    var weatherForecast : [WeatherForecast]?
+    var fish : [Fish]?
+    var peacefullFish : [Fish]?
+    var predatoryFish : [Fish]?
+    var fishType = Constants.peacefullFishNumber
+    var dateIndex = 0
     let fishingForecastAPI = FishingForecastAPI()
     let dataManager = DataManager()
+    
     
     
     override func viewDidLoad() {
@@ -54,84 +79,117 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-                
+        
         fetchData()
         animateTable()
-       // ForecaApiManager.parse()
         
-      //////  dataManager.saveWeatherForecast()
-     //   fishingForecastAPI.showForecaApiParsed()
+        
+        // ForecaApiManager.parse()
+        
+        //////  dataManager.saveWeatherForecast()
+        //   fishingForecastAPI.showForecaApiParsed()
         //fishingForecastAPI.getWaterTemperature()
         print(fishingForecastAPI.hasConnection())
-      //  fishingForecastAPI.test()
+        //  fishingForecastAPI.test()
         
-     //   ForecaAPIManager.parse()
-      //  DataManager.saveWeatherForecast(data: ForecaAPIManager.tenDays)
+        //   ForecaAPIManager.parse()
+        //  DataManager.saveWeatherForecast(data: ForecaAPIManager.tenDays)
         
-//        FishDataManager.getFish()?.forEach{ fish in
-//            print(fish.name)
-//            }
+        //        FishDataManager.getFish()?.forEach{ fish in
+        //            print(fish.name)
+        //            }
         
-    //    ForecaAPIManager.parse()
-     //   DataManager.show(data: ForecaAPIManager.tenDays)
+        //    ForecaAPIManager.parse()
+        //   DataManager.show(data: ForecaAPIManager.tenDays)
         
-       // WaterTemperatureManager.waterTemperatureParse()
+        // WaterTemperatureManager.waterTemperatureParse()
         //DataManager.clearData()
         
-//let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-//print (documentsPath)
+        //let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        //print (documentsPath)
         
-//        let fetchRequest: NSFetchRequest<DailyForecast> = DailyForecast.fetchRequest()
-//
-//        do {
-//            let tenDaysForecast = try DataManager.getContext().fetch(fetchRequest)
-//
-//            print(tenDaysForecast[0].date! + tenDaysForecast[1].date! + tenDaysForecast[2].date!)
-//
-//        } catch {
-//            print (error)
-//        }
+        //        let fetchRequest: NSFetchRequest<DailyForecast> = DailyForecast.fetchRequest()
+        //
+        //        do {
+        //            let tenDaysForecast = try DataManager.getContext().fetch(fetchRequest)
+        //
+        //            print(tenDaysForecast[0].date! + tenDaysForecast[1].date! + tenDaysForecast[2].date!)
+        //
+        //        } catch {
+        //            print (error)
+        //        }
         
     }
-
+    
+    func initFish(){
+        fish = fishingForecastAPI.getFish()
+        if let fish = fish {
+        peacefullFish = fishingForecastAPI.getFishBy(Constants.peacefullFishNumber, from: fish)
+        predatoryFish = fishingForecastAPI.getFishBy(Constants.predatoryFishNumber, from: fish)
+        }
+    }
+    
+    func initCityName() -> String?{
+        if let city = fishingForecastAPI.getNearestCityName() {
+            print (city)
+            cityButton.setTitle(city, for: .normal)
+            return city
+        }
+        return nil
+    }
+  
     func fetchData(){
-        
+        initFish()
+        var cityName = "Березань"
+        if fishingForecastAPI.authorizationLocationStatus() {
+            if let name = initCityName() {
+                cityName = name
+            }
+        }        
+        let longtitude = Constants.cities[cityName]!.longitude
+        let latitude = Constants.cities[cityName]!.latitude
+        let urlString = "http://apitest.foreca.net/?lon=\(longtitude))&lat=\(latitude))&key=2FdEUT2SIA5oFJR1WTuVMWsC1c&format=json"
         switch fishingForecastAPI.hasConnection() {
         case true:
-            fishingForecastAPI.parseDailyForecast(completion: { forecast in
-                self.show(data: forecast, date: forecast[0].date!)
-                self.dailyForecast = forecast
+            fishingForecastAPI.parseDailyForecast(urlString, completion: { forecast in
+                self.show(data: forecast, date: forecast[0].date)
+                self.weatherForecast = forecast
                 self.collectionView.reloadData()
+                self.tableView.reloadData()
                 self.fishingForecastAPI.clearData()
                 self.fishingForecastAPI.saveData(data: forecast)
                 self.fishingForecastAPI.showWaterTemp(data: forecast)
             })
-            
+            //need last city if no connection
         case false:
             if fishingForecastAPI.hasData() {
-                dailyForecast = fishingForecastAPI.loadDailyForecast()
+                weatherForecast = fishingForecastAPI.loadDailyForecast()
             } else {
                 fishingForecastAPI.showError()
             }
         }
     }
     
+    
     func show(data: [WeatherForecast], date: String){
         
         data.forEach { forecast in
             if forecast.date == date {
-                cityButton.titleLabel?.text = "Киев"
-                dateLabel.text = forecast.date
-                temperatureLabel.text = addPlusSignIfPlusTemperature(to: forecast.maxTemperature)
+                dateLabel.text = fishingForecastAPI.getDateBy(string: forecast.date)
+                temperatureLabel.text = addPlusSignIfPlusTemperature(to: forecast.maxTemperature) + "°"
                 nightTemperatureLabel.text = Constants.MainViewText.nightTemperature + addPlusSignIfPlusTemperature(to: forecast.minTemperature)
-                waterTemperatureLabel.text = Constants.MainViewText.waterTemperature + String(3)
+                if forecast.waterTemperature == 0 {
+                    waterTemperatureLabel.text = Constants.MainViewText.noData
+                } else {
+                    waterTemperatureLabel.text = Constants.MainViewText.waterTemperature + "+" + String(forecast.waterTemperature)
+                }
                 sunRiseLabel.text = forecast.sunRise
                 sunSetLabel.text = forecast.sunSet
-                cloudnessImageView.image = fishingForecastAPI.getImageBy(symbolCode: forecast.cloudinessSymbolCode!)
-                windSpeedLabel.text = Constants.MainViewText.wind + String(forecast.windSpeed) + Constants.MainViewText.ms
-                windDirectionLabel.text = Constants.MainViewText.windDirection[forecast.windDirection!]
+                cloudnessImageView.image = fishingForecastAPI.getImageBy(symbolCode: forecast.cloudinessSymbolCode)
+                windSpeedLabel.text = Constants.MainViewText.wind + String(forecast.windSpeed) + Constants.MainViewText.ms                
+                windDirectionLabel.text = Constants.MainViewText.windDirection[forecast.windDirection]
                 pressureLabel.text = Constants.MainViewText.pressure + fishingForecastAPI.convertToMmFrom(pascals: forecast.pressure)  + Constants.MainViewText.mm
-                precipitationProbabilityLabel.text = Constants.MainViewText.precipitationProbability + String(forecast.precipitationProbability) + " %"
+                precipitationProbabilityLabel.text = Constants.MainViewText.precipitationProbability + String(forecast.precipitationProbability) + "%"
                 moonPhaseLabel.text = fishingForecastAPI.getMoonPhaseBy(degrees: forecast.moonPhase)
             }
         }
@@ -144,40 +202,67 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return String(temperature)
     }
     
-    let array = ["21.09", "22.09", "23.09", "24.09", "25.09", "26.09", "27.09", "28.09", "29.09", "30.09"]
     
-        
     // MARK: - CollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(dailyForecast?.count)
-        return dailyForecast?.count ?? 0
+        print(weatherForecast?.count ?? 0)
+        return weatherForecast?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colcell", for: indexPath) as! DatesCollectionViewCell
         
-        let forecast = dailyForecast
-        cell.dateButton.setTitle(fishingForecastAPI.format(fromDate: forecast![indexPath.row].date!) , for: .normal)
+        let forecast = weatherForecast
+        cell.dateButton.setTitle(fishingForecastAPI.format(fromDate: forecast![indexPath.row].date) , for: .normal)
         
-        let lastItemIndex = array.count - 1
+        let lastItemIndex = (weatherForecast?.count)! - 1
         if indexPath.row == lastItemIndex {
             cell.lineImage.image = nil
         }
-     
+        cell.dateButton.addTarget(self, action: #selector(masterCellAction), for: .touchUpInside )
+        
         
         return cell
     }
     
+    @IBAction func masterCellAction(_ sender: UIButton) {
+        let buttonPosition = sender.convert(CGPoint.zero, to: self.collectionView)
+        
+        let indexPath = self.collectionView.indexPathForItem(at: buttonPosition)
+        
+        if let dailyForecast = weatherForecast {
+            let selectedCellDate = dailyForecast[(indexPath?.row)!].date
+            show(data: dailyForecast, date: selectedCellDate)
+            dateIndex = indexPath?.row ?? 0
+            self.tableView.reloadData()
+        }
+    }
+    
+    
     // MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if fishType == Constants.peacefullFishNumber {
+            return peacefullFish?.count ?? 0
+        } else {
+            return predatoryFish?.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tbcell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tbcell", for: indexPath) as! FishAndBiteLevelTableViewCell
         
-        
-        
+        var bitingLevel = 10
+        if peacefullFish != nil && predatoryFish != nil && weatherForecast != nil {
+            if fishType == Constants.peacefullFishNumber {
+                cell.fishImage.image = UIImage(named: (peacefullFish![indexPath.row].name + ".png"))
+                bitingLevel = fishingForecastAPI.calculateBitingLevel(peacefullFish![indexPath.row], dateIndex, weatherForecast!)
+                cell.biteLevelImage.image = fishingForecastAPI.getBitingLevelImage(bitingLevel)
+            } else {
+                cell.fishImage.image = UIImage(named: (predatoryFish![indexPath.row].name + ".png"))
+                bitingLevel = fishingForecastAPI.calculateBitingLevel(predatoryFish![indexPath.row], dateIndex, weatherForecast!)
+                cell.biteLevelImage.image = fishingForecastAPI.getBitingLevelImage(bitingLevel)
+            }
+        }        
         return cell
     }
     
@@ -185,13 +270,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func animateTable() {
         tableView.reloadData()
         let cells = tableView.visibleCells
-
+        
         let tableViewHeight = tableView.bounds.size.height
-
+        
         for cell in cells {
             cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
         }
-
+        
         var delayCounter = 0
         for cell in cells {
             UIView.animate(withDuration: 1.75, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
@@ -199,7 +284,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }, completion: nil)
             delayCounter += 1
         }
-
+        
     }
 }
 

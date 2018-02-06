@@ -39,4 +39,14 @@ struct DateManager {
         return date
     }
     
+    func getDayInWeekAndDateBy(string: String) -> String {
+        let date = getDateBy(string: string)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat  = "EEEE, d MMMM"
+        let dayInWeek = dateFormatter.string(from: date!)
+        
+        return dayInWeek
+    }
+    
 }

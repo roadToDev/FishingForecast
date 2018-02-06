@@ -6,10 +6,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "lvl4@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "lvl4@3x.png",
       "scale" : "3x"
     }
   ],

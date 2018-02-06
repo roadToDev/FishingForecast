@@ -1,6 +1,11 @@
 import Foundation
+import CoreLocation
 
 struct Constants {
+    
+    static let predatoryFishNumber = 2
+    static let peacefullFishNumber = 1
+    
     struct MainViewText {
         static let wind = "Ветер "
         static let pressure = "Давление "
@@ -17,19 +22,34 @@ struct Constants {
         static let precipitationProbability = "Вероятность осадков "
         static let nightTemperature = "t° ночью "
         static let waterTemperature = "t° воды "
+        static let noData = "нет данных"
         static let ms = " м/с"
         static let mm = " мм"
     }
-    struct MoonPhases {
-        static let newMoon =  "Новая луна"
-        static let waxingGrescent = "Молодая луна"
-        static let firstQuarter =  "Первая четверть"
-        static let waxingGibbous = "Прибывающая луна"
-        static let fullMoon = "Полная луна"
-        static let waningGibbous = "Убывающая луна"
-        static let lastQuarter =  "Последняя четверть"
-        static let waningGrescent =  "Старая луна"
+    
+    static let cities = ["Киев" : CLLocationCoordinate2D(latitude: 50.4501, longitude: 30.5234),
+                         "Белая Церковь" : CLLocationCoordinate2D(latitude: 49.7958, longitude: 30.1172),
+                         "Березань" : CLLocationCoordinate2D(latitude: 50.3074, longitude: 31.4707)
+                         ]
+    
+    static var citiesCoordinates : [CLLocationCoordinate2D] {
+        var coordinates = [CLLocationCoordinate2D]()
+        cities.forEach({ city in
+            coordinates.append(city.value)
+        })
+        return coordinates
     }
+    
+//    struct MoonPhases {
+//        static let newMoon =  "Новая луна"
+//        static let waxingGrescent = "Молодая луна"
+//        static let firstQuarter =  "Первая четверть"
+//        static let waxingGibbous = "Прибывающая луна"
+//        static let fullMoon = "Полная луна"
+//        static let waningGibbous = "Убывающая луна"
+//        static let lastQuarter =  "Последняя четверть"
+//        static let waningGrescent =  "Старая луна"
+//    }
     static let moonPhases = [
         0 ... 45 : "Новолуние",
         45 ... 90 : "Молодая луна",

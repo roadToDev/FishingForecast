@@ -50,6 +50,7 @@ struct DataManager {
             dailyForecast.windSpeed = Int32(forecast.windSpeed)
             dailyForecast.windDirection = forecast.windDirection
             dailyForecast.moonPhase = Int32(forecast.moonPhase)
+            dailyForecast.waterTemperature = 0
             
             DataManager.saveContext()
         })
@@ -66,7 +67,8 @@ struct DataManager {
         do {
             let fetchedData = try DataManager.getContext().fetch(fetchRequest)
             fetchedData.forEach{ parameter in
-                let dailyWeatherForecast = WeatherForecast(cloudinessSymbolCode: parameter.cloudinessSymbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: parameter.pressure, sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase))
+                let dailyWeatherForecast = WeatherForecast(cloudinessSymbolCode: parameter.cloudinessSymbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: parameter.pressure, sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase), waterTemperature: parameter.waterTemperature)
+                
                 dailyForecast.append(dailyWeatherForecast)
             }
         } catch {

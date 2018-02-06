@@ -16,6 +16,8 @@
 		FA36DF191F96134C0075F56D /* DailyForecast+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36DF171F96134C0075F56D /* DailyForecast+CoreDataClass.swift */; };
 		FA36DF1A1F96134C0075F56D /* DailyForecast+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36DF181F96134C0075F56D /* DailyForecast+CoreDataProperties.swift */; };
 		FA36DF1C1F99D41E0075F56D /* WaterTemperatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36DF1B1F99D41E0075F56D /* WaterTemperatureManager.swift */; };
+		FA3CA6172015FD1B00AF2A03 /* NearestLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CA6152015FD1300AF2A03 /* NearestLocation.swift */; };
+		FA3E76FD2018CA88003F9A5E /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E76FC2018CA88003F9A5E /* LocationViewController.swift */; };
 		FA43434F1FB9E75B00251D78 /* BiteLevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43434E1FB9E75B00251D78 /* BiteLevelManager.swift */; };
 		FA4343781FBDA63600251D78 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4343771FBDA63600251D78 /* DateManager.swift */; };
 		FA43437A1FBDADB300251D78 /* DateManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4343791FBDADB300251D78 /* DateManagerTests.swift */; };
@@ -36,6 +38,7 @@
 		FA718DE31F82719000FB19C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA718DE21F82719000FB19C1 /* Assets.xcassets */; };
 		FA718DE61F82719000FB19C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA718DE41F82719000FB19C1 /* LaunchScreen.storyboard */; };
 		FA718DF11F82719000FB19C1 /* FishingForecastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DF01F82719000FB19C1 /* FishingForecastTests.swift */; };
+		FAA15AE920062A7B00C2481A /* FishAndBiteLevelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA15AE820062A7B00C2481A /* FishAndBiteLevelTableViewCell.swift */; };
 		FAE36E7A1F8BA05200F1A0C7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE36E791F8BA05200F1A0C7 /* DataManager.swift */; };
 		FAE36E7D1F8BA0F100F1A0C7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE36E7C1F8BA0F100F1A0C7 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
@@ -64,6 +67,8 @@
 		FA36DF171F96134C0075F56D /* DailyForecast+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyForecast+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA36DF181F96134C0075F56D /* DailyForecast+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyForecast+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA36DF1B1F99D41E0075F56D /* WaterTemperatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTemperatureManager.swift; sourceTree = "<group>"; };
+		FA3CA6152015FD1300AF2A03 /* NearestLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestLocation.swift; sourceTree = "<group>"; };
+		FA3E76FC2018CA88003F9A5E /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		FA43434E1FB9E75B00251D78 /* BiteLevelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiteLevelManager.swift; sourceTree = "<group>"; };
 		FA4343771FBDA63600251D78 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		FA4343791FBDADB300251D78 /* DateManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManagerTests.swift; sourceTree = "<group>"; };
@@ -88,6 +93,8 @@
 		FA718DEC1F82719000FB19C1 /* FishingForecastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishingForecastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA718DF01F82719000FB19C1 /* FishingForecastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishingForecastTests.swift; sourceTree = "<group>"; };
 		FA718DF21F82719000FB19C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAA15AE72004C56D00C2481A /* FishingForecast v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FishingForecast v2.xcdatamodel"; sourceTree = "<group>"; };
+		FAA15AE820062A7B00C2481A /* FishAndBiteLevelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishAndBiteLevelTableViewCell.swift; sourceTree = "<group>"; };
 		FAE36E791F8BA05200F1A0C7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FAE36E7C1F8BA0F100F1A0C7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				FA26C6321FA9C8B600AD8A3C /* DatesCollectionViewCell.swift */,
+				FAA15AE820062A7B00C2481A /* FishAndBiteLevelTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +185,7 @@
 		FA718DD71F82719000FB19C1 /* FishingForecast */ = {
 			isa = PBXGroup;
 			children = (
+				FA3CA6152015FD1300AF2A03 /* NearestLocation.swift */,
 				FA5DBC4B1FCC455700718742 /* FishManager.swift */,
 				FAE36E791F8BA05200F1A0C7 /* DataManager.swift */,
 				FA43434E1FB9E75B00251D78 /* BiteLevelManager.swift */,
@@ -190,6 +199,7 @@
 				FA43437D1FC59FD700251D78 /* FishingForecastAPI.swift */,
 				FA5DBC571FD014E900718742 /* ErrorViewController.swift */,
 				FA718DDA1F82719000FB19C1 /* ViewController.swift */,
+				FA3E76FC2018CA88003F9A5E /* LocationViewController.swift */,
 				FAE36E7B1F8BA0B900F1A0C7 /* SupportFiles */,
 				FA718DDC1F82719000FB19C1 /* Main.storyboard */,
 				FA718DE71F82719000FB19C1 /* Info.plist */,
@@ -449,11 +459,14 @@
 				FA5DBC5A1FD0398100718742 /* WeatherForecast.swift in Sources */,
 				FA43434F1FB9E75B00251D78 /* BiteLevelManager.swift in Sources */,
 				FA5DBC4E1FCC46A400718742 /* Fish.swift in Sources */,
+				FA3E76FD2018CA88003F9A5E /* LocationViewController.swift in Sources */,
 				FA718DDB1F82719000FB19C1 /* ViewController.swift in Sources */,
 				FA4343781FBDA63600251D78 /* DateManager.swift in Sources */,
 				FA5DBC521FCDA8A200718742 /* Reachability.swift in Sources */,
+				FA3CA6172015FD1B00AF2A03 /* NearestLocation.swift in Sources */,
 				FA36DF191F96134C0075F56D /* DailyForecast+CoreDataClass.swift in Sources */,
 				FA718DD91F82719000FB19C1 /* AppDelegate.swift in Sources */,
+				FAA15AE920062A7B00C2481A /* FishAndBiteLevelTableViewCell.swift in Sources */,
 				FA5DBC4C1FCC455700718742 /* FishManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -713,9 +726,10 @@
 		FA718DDF1F82719000FB19C1 /* FishingForecast.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FAA15AE72004C56D00C2481A /* FishingForecast v2.xcdatamodel */,
 				FA718DE01F82719000FB19C1 /* FishingForecast.xcdatamodel */,
 			);
-			currentVersion = FA718DE01F82719000FB19C1 /* FishingForecast.xcdatamodel */;
+			currentVersion = FAA15AE72004C56D00C2481A /* FishingForecast v2.xcdatamodel */;
 			path = FishingForecast.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

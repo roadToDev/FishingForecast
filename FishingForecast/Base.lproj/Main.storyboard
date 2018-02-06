@@ -55,6 +55,9 @@
                                                                 <state key="normal" title="Переяслав-Хмельницкий">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="showLocationPopUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w5g-y0-ugF"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -314,10 +317,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5M-wf-07Z" userLabel="predatoryfishbutton">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
                                         <state key="normal" image="predatoryfishbutton"/>
+                                        <connections>
+                                            <action selector="predatoryButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S1N-uR-sVb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btd-Ty-96k" userLabel="peacefullfishbutton">
                                         <rect key="frame" x="80" y="0.0" width="80" height="28"/>
                                         <state key="normal" image="peacefullfishbutton"/>
+                                        <connections>
+                                            <action selector="peacefullButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jZu-q9-7ar"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kO0-va-mPk" userLabel="baitbutton">
                                         <rect key="frame" x="160" y="0.0" width="80" height="28"/>
@@ -330,7 +339,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="f0l-jf-458" userLabel="line bottom">
-                                <rect key="frame" x="5" y="526" width="310" height="1"/>
+                                <rect key="frame" x="5" y="527" width="310" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="LXC-J1-stp"/>
                                 </constraints>
@@ -381,7 +390,7 @@
                                 <rect key="frame" x="5" y="287" width="305" height="240"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tbcell" id="6dr-Sj-ca9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tbcell" id="6dr-Sj-ca9" customClass="FishAndBiteLevelTableViewCell" customModule="FishingForecast" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="305" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6dr-Sj-ca9" id="iaK-3I-beb">
@@ -409,6 +418,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="biteLevelImage" destination="aPP-V5-h8w" id="BQu-yQ-93m"/>
+                                            <outlet property="fishImage" destination="ZVu-Of-YDZ" id="Lpm-QF-1jh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -449,7 +462,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="n3C-ls-L2I" secondAttribute="bottom" constant="5" id="oEi-f2-af4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tUr-yH-mSg" secondAttribute="trailing" constant="10" id="oO6-YX-2wD"/>
                             <constraint firstItem="f0l-jf-458" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="oRv-HM-9T2"/>
-                            <constraint firstItem="n3C-ls-L2I" firstAttribute="top" secondItem="f0l-jf-458" secondAttribute="bottom" constant="8" id="pGR-8F-Mcd"/>
+                            <constraint firstItem="n3C-ls-L2I" firstAttribute="top" secondItem="f0l-jf-458" secondAttribute="bottom" constant="7" id="pGR-8F-Mcd"/>
                             <constraint firstItem="hx3-Sf-FJ0" firstAttribute="top" secondItem="zmm-ih-RiN" secondAttribute="bottom" constant="28" id="qhm-Md-7he"/>
                             <constraint firstItem="91T-YP-iff" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="sAV-tA-Rkh"/>
                             <constraint firstItem="8BW-qu-TFm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="vJt-dP-e0O"/>
@@ -501,7 +514,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgk-Jg-WIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="117"/>
+            <point key="canvasLocation" x="1496" y="115"/>
+        </scene>
+        <!--Location View Controller-->
+        <scene sceneID="i4O-1g-YS1">
+            <objects>
+                <viewController storyboardIdentifier="locationPopUp" id="xz1-Yk-1ui" customClass="LocationViewController" customModule="FishingForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pus-Zb-dtk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyZ-hK-v85">
+                                <rect key="frame" x="18" y="126.5" width="285" height="335"/>
+                                <color key="backgroundColor" red="0.49019607843137253" green="0.5725490196078431" blue="0.39215686274509803" alpha="0.74530202404495471" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="285" id="m1g-OM-BI6"/>
+                                    <constraint firstAttribute="height" constant="335" id="pZN-ef-cyW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iyZ-hK-v85" firstAttribute="centerX" secondItem="yel-Xu-xMH" secondAttribute="centerX" id="f2w-kH-Drd"/>
+                            <constraint firstItem="iyZ-hK-v85" firstAttribute="centerY" secondItem="yel-Xu-xMH" secondAttribute="centerY" id="x9e-hO-4cr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yel-Xu-xMH"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                <color key="value" red="0.0" green="0.98039215686274506" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <connections>
+                        <outlet property="popUp" destination="iyZ-hK-v85" id="8q9-ur-egg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g6H-7i-U2S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806" y="116"/>
         </scene>
     </scenes>
     <resources>

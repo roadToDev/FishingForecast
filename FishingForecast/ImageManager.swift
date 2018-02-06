@@ -3,7 +3,7 @@ import UIKit
 
 struct ImageManager {
     
-    func getWeatherImageBy(_ symbolCode: String) -> (image: UIImage, description: String) {
+    static func getWeatherImageBy(_ symbolCode: String) -> (image: UIImage, description: String) {
         
         switch symbolCode {
         case "d000", "d100":
@@ -34,6 +34,33 @@ struct ImageManager {
             return (#imageLiteral(resourceName: "OvercastSnow"), "OvercastSnow")
         default:
             return (#imageLiteral(resourceName: "Overcast"), "Overcast")
+        }
+        
+    }
+    
+    static func getImageByBitingLevel(_ bitingLevel: Int) -> UIImage {
+        
+        switch bitingLevel {
+        case 10:
+            return #imageLiteral(resourceName: "lvl1")
+        case 20:
+            return #imageLiteral(resourceName: "lvl2")
+        case 30:
+            return #imageLiteral(resourceName: "lvl3")
+        case 40:
+            return #imageLiteral(resourceName: "lvl4")
+        case 50:
+            return #imageLiteral(resourceName: "lvl5")
+        case 60:
+            return #imageLiteral(resourceName: "lvl6")
+        case 70:
+            return #imageLiteral(resourceName: "lvl7")
+        case 80:
+            return #imageLiteral(resourceName: "lvl8")
+        case 90:
+            return #imageLiteral(resourceName: "lvl9")
+        default:
+            return #imageLiteral(resourceName: "lvl10")
         }
         
     }
