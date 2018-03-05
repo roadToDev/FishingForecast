@@ -19,7 +19,7 @@ class NearestLocation : NSObject, CLLocationManagerDelegate {
         let coordinates : CLLocationCoordinate2D = location.coordinate
         
         var cityName = ""
-        Constants.cities.forEach { location in
+        Constants.geoLocations.forEach { location in
             if location.value.latitude == coordinates.latitude && location.value.longitude == coordinates.longitude {
                 cityName = location.key
             }
@@ -50,7 +50,8 @@ class NearestLocation : NSObject, CLLocationManagerDelegate {
             
             manager.delegate = self
             manager.desiredAccuracy = kCLLocationAccuracyKilometer
-            manager.startUpdatingLocation()
+          //  manager.startUpdatingLocation()
+            manager.requestLocation()
         
             if let currentLocation = manager.location {
                 print(currentLocation)
@@ -73,8 +74,12 @@ class NearestLocation : NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.stopUpdatingLocation()
-        print(manager.location)
+       // manager.stopUpdatingLocation()
+       // print(manager.location)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
     }
     
 }

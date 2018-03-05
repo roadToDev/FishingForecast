@@ -68,6 +68,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var dateIndex = 0
     let fishingForecastAPI = FishingForecastAPI()
     let dataManager = DataManager()
+    var firstLaunch = true
+    var cityName = "Киев"
     
     
     
@@ -80,7 +82,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        fetchData()
+        cityButton.setTitle(cityName, for: .normal)
+        getData()
         animateTable()
         
         
@@ -129,28 +132,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func initCityName() -> String?{
-        if let city = fishingForecastAPI.getNearestCityName() {
-            print (city)
-            cityButton.setTitle(city, for: .normal)
-            return city
-        }
-        return nil
+    func fetchData() {
+        weatherForecast = fishingForecastAPI.loadDailyForecast()
     }
-  
-    func fetchData(){
-        initFish()
-        var cityName = "Березань"
-        if fishingForecastAPI.authorizationLocationStatus() {
-            if let name = initCityName() {
-                cityName = name
-            }
-        }        
-        let longtitude = Constants.cities[cityName]!.longitude
-        let latitude = Constants.cities[cityName]!.latitude
-        let urlString = "http://apitest.foreca.net/?lon=\(longtitude))&lat=\(latitude))&key=2FdEUT2SIA5oFJR1WTuVMWsC1c&format=json"
-        switch fishingForecastAPI.hasConnection() {
-        case true:
+    func loadData() {
+        if fishingForecastAPI.hasConnection() {
+            let longtitude = Constants.geoLocations[cityName]!.longitude
+            let latitude = Constants.geoLocations[cityName]!.latitude
+            let urlString = "http://apitest.foreca.net/?lon=\(longtitude))&lat=\(latitude))&key=2FdEUT2SIA5oFJR1WTuVMWsC1c&format=json"
             fishingForecastAPI.parseDailyForecast(urlString, completion: { forecast in
                 self.show(data: forecast, date: forecast[0].date)
                 self.weatherForecast = forecast
@@ -160,16 +149,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.fishingForecastAPI.saveData(data: forecast)
                 self.fishingForecastAPI.showWaterTemp(data: forecast)
             })
-            //need last city if no connection
-        case false:
-            if fishingForecastAPI.hasData() {
-                weatherForecast = fishingForecastAPI.loadDailyForecast()
-            } else {
-                fishingForecastAPI.showError()
-            }
+        } else {
+            fishingForecastAPI.showError()
         }
     }
     
+    func getData() {
+        initFish()
+        if firstLaunch {
+            if fishingForecastAPI.hasData() {
+                fetchData()
+                if let forecast = weatherForecast {
+                    self.show(data: forecast, date: forecast[0].date)
+                }
+            } else {
+                loadData()
+            }
+        } else {
+            loadData()
+        }
+    }    
     
     func show(data: [WeatherForecast], date: String){
         
