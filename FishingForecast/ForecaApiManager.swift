@@ -3,7 +3,6 @@ import Foundation
 class ForecaApiManager {
     
     func parse(_ urlString : String, completion: @escaping (Bool, [ForecaDailyForecast]?, Error?) -> ()){
-        
         guard let url = URL(string: urlString) else {
             print("Error: \(urlString) not a valid URL")
             return}
@@ -20,7 +19,7 @@ class ForecaApiManager {
                     let parsedData = try JSONDecoder().decode(ForecaWeatherForecast.self, from: data)
                     let dailyForecast = parsedData.tenDaysForecast
                     DispatchQueue.main.async {
-                       completion(true, dailyForecast, nil)
+                       completion(true, dailyForecast, nil)                        
                     }
                 } catch let error {
                     print (error)

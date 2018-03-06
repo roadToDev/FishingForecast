@@ -22,7 +22,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FishingForecast" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="FishingForecast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -556,6 +556,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="autoSearch:" destination="xz1-Yk-1ui" eventType="touchUpInside" id="FUz-Dn-RX3"/>
+                                        </connections>
                                     </button>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Введите нас. пункт" translatesAutoresizingMaskIntoConstraints="NO" id="HQ5-eo-fCz">
                                         <rect key="frame" x="17" y="176" width="250" height="56"/>
@@ -606,7 +609,6 @@
                                         <state key="selected" backgroundImage="search_button"/>
                                         <connections>
                                             <action selector="search:" destination="xz1-Yk-1ui" eventType="touchUpInside" id="CFb-JN-EII"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="segue" id="sHR-nW-yPb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zop-Fh-l6V">
@@ -663,6 +665,7 @@
                         <outlet property="citySearchBar" destination="HQ5-eo-fCz" id="saI-cs-zaW"/>
                         <outlet property="popUp" destination="iyZ-hK-v85" id="8q9-ur-egg"/>
                         <outlet property="tableView" destination="nNt-zI-IpO" id="hqm-et-Sp0"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segue" animates="NO" id="wSx-3d-PD7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6H-7i-U2S" userLabel="First Responder" sceneMemberID="firstResponder"/>

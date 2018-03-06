@@ -33,12 +33,13 @@ struct DataManager {
     //        return nil
     //    }
     
-    func save(data: [WeatherForecast]){
+    func save(data: [WeatherForecast], _ cityName: String){
         
         data.forEach({ forecast in
             
             let dailyForecast: DailyForecast = NSEntityDescription.insertNewObject(forEntityName: "DailyForecast", into: DataManager.getContext()) as! DailyForecast
             
+            dailyForecast.cityName = cityName
             dailyForecast.date = forecast.date
             dailyForecast.cloudinessSymbolCode = forecast.cloudinessSymbolCode
             dailyForecast.maxTemperature = Int32(forecast.maxTemperature)
@@ -67,7 +68,7 @@ struct DataManager {
         do {
             let fetchedData = try DataManager.getContext().fetch(fetchRequest)
             fetchedData.forEach{ parameter in
-                let dailyWeatherForecast = WeatherForecast(cloudinessSymbolCode: parameter.cloudinessSymbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: parameter.pressure, sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase), waterTemperature: parameter.waterTemperature)
+                let dailyWeatherForecast = WeatherForecast(cityName: parameter.cityName, cloudinessSymbolCode: parameter.cloudinessSymbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: parameter.pressure, sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase), waterTemperature: parameter.waterTemperature)
                 
                 dailyForecast.append(dailyWeatherForecast)
             }

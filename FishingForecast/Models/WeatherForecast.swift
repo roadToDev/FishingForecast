@@ -1,6 +1,7 @@
 import Foundation
 
 struct WeatherForecast {
+    var cityName: String
     var cloudinessSymbolCode: String
     var date: String
     var maxTemperature: Int32

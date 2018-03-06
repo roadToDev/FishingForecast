@@ -17,6 +17,7 @@ extension DailyForecast {
         return NSFetchRequest<DailyForecast>(entityName: "DailyForecast")
     }
 
+    @NSManaged public var cityName: String
     @NSManaged public var cloudinessSymbolCode: String
     @NSManaged public var date: String
     @NSManaged public var maxTemperature: Int32

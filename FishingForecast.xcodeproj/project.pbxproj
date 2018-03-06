@@ -97,6 +97,7 @@
 		FAA15AE820062A7B00C2481A /* FishAndBiteLevelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishAndBiteLevelTableViewCell.swift; sourceTree = "<group>"; };
 		FAE36E791F8BA05200F1A0C7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FAE36E7C1F8BA0F100F1A0C7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FAFE57D3204DA6A000C440ED /* FishingForecast v 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FishingForecast v 3.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -726,10 +727,11 @@
 		FA718DDF1F82719000FB19C1 /* FishingForecast.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FAFE57D3204DA6A000C440ED /* FishingForecast v 3.xcdatamodel */,
 				FAA15AE72004C56D00C2481A /* FishingForecast v2.xcdatamodel */,
 				FA718DE01F82719000FB19C1 /* FishingForecast.xcdatamodel */,
 			);
-			currentVersion = FAA15AE72004C56D00C2481A /* FishingForecast v2.xcdatamodel */;
+			currentVersion = FAFE57D3204DA6A000C440ED /* FishingForecast v 3.xcdatamodel */;
 			path = FishingForecast.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

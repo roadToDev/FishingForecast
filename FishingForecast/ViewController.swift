@@ -86,7 +86,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         getData()
         animateTable()
         
-        
         // ForecaApiManager.parse()
         
         //////  dataManager.saveWeatherForecast()
@@ -137,16 +136,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     func loadData() {
         if fishingForecastAPI.hasConnection() {
+            //show loading
+            //showLoadingView()
+            //      self.fishingForecastAPI.showError()
             let longtitude = Constants.geoLocations[cityName]!.longitude
             let latitude = Constants.geoLocations[cityName]!.latitude
             let urlString = "http://apitest.foreca.net/?lon=\(longtitude))&lat=\(latitude))&key=2FdEUT2SIA5oFJR1WTuVMWsC1c&format=json"
-            fishingForecastAPI.parseDailyForecast(urlString, completion: { forecast in
-                self.show(data: forecast, date: forecast[0].date)
+            fishingForecastAPI.parseDailyForecast(urlString, completion: { forecast in               
                 self.weatherForecast = forecast
+                self.show(data: forecast, date: forecast[0].date)
                 self.collectionView.reloadData()
                 self.tableView.reloadData()
+                
                 self.fishingForecastAPI.clearData()
-                self.fishingForecastAPI.saveData(data: forecast)
+                self.fishingForecastAPI.saveData(data: forecast, self.cityName)
                 self.fishingForecastAPI.showWaterTemp(data: forecast)
             })
         } else {
@@ -159,6 +162,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if firstLaunch {
             if fishingForecastAPI.hasData() {
                 fetchData()
+                if let city = weatherForecast?.first?.cityName {
+                    cityButton.setTitle(city, for: .normal)
+                }
                 if let forecast = weatherForecast {
                     self.show(data: forecast, date: forecast[0].date)
                 }
@@ -285,5 +291,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
     }
+    
+    // MARK: LoadingView
+    func showLoadingView() {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    func hideLoadingView() {
+        dismiss(animated: false, completion: nil)
+    }
+    
 }
 

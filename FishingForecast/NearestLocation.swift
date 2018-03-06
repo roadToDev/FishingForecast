@@ -75,7 +75,7 @@ class NearestLocation : NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
        // manager.stopUpdatingLocation()
-       // print(manager.location)
+        print(manager.location)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

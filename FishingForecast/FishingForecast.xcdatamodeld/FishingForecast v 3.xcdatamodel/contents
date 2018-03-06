@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DailyForecast" representedClassName="DailyForecast" syncable="YES">
+        <attribute name="cityName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cloudinessSymbolCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxTemperature" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="minTemperature" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="moonPhase" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="precipitationProbability" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pressure" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sunRise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sunSet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="waterTemperature" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="windDirection" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DailyForecast" positionX="-54" positionY="-9" width="128" height="240"/>
+    </elements>
+</model>

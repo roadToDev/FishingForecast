@@ -12,6 +12,8 @@ class LocationViewController: UIViewController {
     var autoCompleteStations = Constants.cities
     var autoComplete = [String]()
     let fishingForecastAPI = FishingForecastAPI()
+    var autoSearchButtonTapped = false
+    var cityName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,34 +29,44 @@ class LocationViewController: UIViewController {
         self.showAnimate()
     }
     
-//    func initCityName() -> String?{
-//        if let city = fishingForecastAPI.getNearestCityName() {
-//            print (city)
-//            return city
-//        }
-//        return nil
-//    }
+    func initCityName() -> String?{
+        if let city = fishingForecastAPI.getNearestCityName() {
+            cityName = city
+            print (city)
+            return city
+        }
+        return nil
+    }
     
     
     @IBAction func closePopUp(_ sender: UIButton) {
         removeAnimate()
     }
     
+    @IBAction func autoSearch(_ sender: UIButton) {
+        if let city = initCityName() {
+            cityName = city
+            autoSearchButtonTapped = true
+            performSegue(withIdentifier: "segue", sender: self)
+            removeAnimate()
+        }      
+    }
     
     @IBAction func search(_ sender: UIButton) {
         if checkCity() {
+            performSegue(withIdentifier: "segue", sender: self)
             removeAnimate()
         }
     }
     
     func checkCity() -> Bool {
-        
         guard let cityName = citySearchBar.text else {
             return false
         }
         var flag = false
         Constants.cities.forEach { city in
             if city.lowercased() == cityName.lowercased() {
+                self.cityName = cityName
                 flag = true                
             }
         }
@@ -66,8 +78,8 @@ class LocationViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let viewController = segue.destination as! ViewController
-        viewController.cityName = citySearchBar.text!
-        viewController.firstLaunch = false
+        viewController.cityName = cityName
+        viewController.firstLaunch = false        
     }
     
     //MARK: Adding Attributes

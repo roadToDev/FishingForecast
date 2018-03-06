@@ -83,6 +83,11 @@ struct FishingForecastAPI {
         appDelegate.showDataError()
     }
     
+    func hideLoadingView() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.hideLoadingView()
+    }
+    
     func loadDailyForecast() -> [WeatherForecast]? {
         return dataManager.loadDailyForecast()
     }
@@ -91,8 +96,8 @@ struct FishingForecastAPI {
         dataManager.clear()
     }
     
-    func saveData(data: [WeatherForecast]) {
-        dataManager.save(data: data)
+    func saveData(data: [WeatherForecast], _ cityName: String) {
+        dataManager.save(data: data, cityName)
     }
     
     func parseDailyForecast(_ urlString : String, completion: @escaping ([WeatherForecast]) -> ()){
@@ -104,7 +109,7 @@ struct FishingForecastAPI {
                 guard let parsedData = response else { return }
                 parsedData.forEach({ parameter in
                     
-                    let dailyWeatherForecast = WeatherForecast(cloudinessSymbolCode: parameter.symbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: Int32((parameter.minPressure + parameter.maxPressure) / 2), sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase), waterTemperature: 0)
+                    let dailyWeatherForecast = WeatherForecast(cityName: "", cloudinessSymbolCode: parameter.symbolCode, date: parameter.date, maxTemperature: Int32(parameter.maxTemperature), minTemperature: Int32(parameter.minTemperature), precipitationProbability: Int32(parameter.precipitationProbability), pressure: Int32((parameter.minPressure + parameter.maxPressure) / 2), sunRise: parameter.sunRise, sunSet: parameter.sunSet, windDirection: parameter.windDirection, windSpeed: Int32(parameter.windSpeed), moonPhase: Int32(parameter.moonPhase), waterTemperature: 0)
                     
                     dailyForecast.append(dailyWeatherForecast)
                 })
