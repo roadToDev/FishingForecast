@@ -90,13 +90,10 @@ struct FishingForecastAPI {
     
     func loadDailyForecast() -> [WeatherForecast]? {
         return dataManager.loadDailyForecast()
-    }
-    
-    func clearData() {
-        dataManager.clear()
-    }
+    }    
     
     func saveData(data: [WeatherForecast], _ cityName: String) {
+        dataManager.clear()
         dataManager.save(data: data, cityName)
     }
     

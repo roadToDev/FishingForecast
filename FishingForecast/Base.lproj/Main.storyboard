@@ -623,7 +623,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.49019607843137253" green="0.5725490196078431" blue="0.39215686274509803" alpha="0.7539597602739726" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.27450980392156865" green="0.52941176470588236" blue="0.72549019607843135" alpha="0.7539597602739726" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ooa-OF-rua" secondAttribute="bottom" constant="8" id="7DK-Mr-srd"/>
                                     <constraint firstItem="zop-Fh-l6V" firstAttribute="top" secondItem="iyZ-hK-v85" secondAttribute="top" constant="8" id="AFl-vs-ARj"/>

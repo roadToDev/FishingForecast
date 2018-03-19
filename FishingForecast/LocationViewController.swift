@@ -47,8 +47,8 @@ class LocationViewController: UIViewController {
         if let city = initCityName() {
             cityName = city
             autoSearchButtonTapped = true
-            performSegue(withIdentifier: "segue", sender: self)
-            removeAnimate()
+            performSegue(withIdentifier: "segue", sender: self)            
+            removeAnimate()            
         }      
     }
     
@@ -143,7 +143,7 @@ extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-    //MARK: - UISearchBar (For autocomplete)
+    //MARK: - UISearchBar (autocomplete)
 extension LocationViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

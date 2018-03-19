@@ -71,8 +71,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var firstLaunch = true
     var cityName = "Киев"
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,6 +83,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cityButton.setTitle(cityName, for: .normal)
         getData()
         animateTable()
+        
+       
         
         // ForecaApiManager.parse()
         
@@ -134,21 +134,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func fetchData() {
         weatherForecast = fishingForecastAPI.loadDailyForecast()
     }
+    func reloadData() {
+        self.collectionView.reloadData()
+        self.tableView.reloadData()
+    }
+    
     func loadData() {
         if fishingForecastAPI.hasConnection() {
-            //show loading
-            //showLoadingView()
-            //      self.fishingForecastAPI.showError()
+           // showLoadingIndicator()
+            showActivityIndicator(uiView: self.view)
             let longtitude = Constants.geoLocations[cityName]!.longitude
             let latitude = Constants.geoLocations[cityName]!.latitude
             let urlString = "http://apitest.foreca.net/?lon=\(longtitude))&lat=\(latitude))&key=2FdEUT2SIA5oFJR1WTuVMWsC1c&format=json"
-            fishingForecastAPI.parseDailyForecast(urlString, completion: { forecast in               
+            fishingForecastAPI.parseDailyForecast(urlString, completion: { forecast in
+             //   self.hideLoadingIndicator()
+                self.hideActivityIndicator()
                 self.weatherForecast = forecast
                 self.show(data: forecast, date: forecast[0].date)
-                self.collectionView.reloadData()
-                self.tableView.reloadData()
+                self.reloadData()
                 
-                self.fishingForecastAPI.clearData()
                 self.fishingForecastAPI.saveData(data: forecast, self.cityName)
                 self.fishingForecastAPI.showWaterTemp(data: forecast)
             })
@@ -291,21 +295,45 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
     }
+    // MARK: LoadingPopUp
     
-    // MARK: LoadingView
-    func showLoadingView() {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+    var container: UIView = UIView()
+    var loadingView: UIView = UIView()
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    func showActivityIndicator(uiView: UIView) {
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
         
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        loadingIndicator.startAnimating();
         
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
+        loadingView.center = uiView.center
+        loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0);
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        
+        let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 21.0))
+        label.center = CGPoint(x: uiView.frame.size.width / 2, y: uiView.frame.size.height / 2 - 60)
+        label.textAlignment = NSTextAlignment.center
+        label.textColor = UIColor(ciColor: .white)
+        label.numberOfLines = 0
+        label.text = "Загрузка данных..."
+        
+        
+        loadingView.addSubview(activityIndicator)
+        container.addSubview(loadingView)
+        container.addSubview(label)
+        uiView.addSubview(container)
+        activityIndicator.startAnimating()
     }
-    func hideLoadingView() {
-        dismiss(animated: false, completion: nil)
+    func hideActivityIndicator() {
+        activityIndicator.stopAnimating()
+        container.removeFromSuperview()
     }
     
 }
