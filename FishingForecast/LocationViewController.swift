@@ -49,7 +49,9 @@ class LocationViewController: UIViewController {
             autoSearchButtonTapped = true
             performSegue(withIdentifier: "segue", sender: self)            
             removeAnimate()            
-        }      
+        } else {
+            print ("No city Name")
+        }
     }
     
     @IBAction func search(_ sender: UIButton) {

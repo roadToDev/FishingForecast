@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var cityButton: UIButton!
     
@@ -211,29 +211,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return String(temperature)
     }
     
-    
-    // MARK: - CollectionView
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(weatherForecast?.count ?? 0)
-        return weatherForecast?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colcell", for: indexPath) as! DatesCollectionViewCell
-        
-        let forecast = weatherForecast
-        cell.dateButton.setTitle(fishingForecastAPI.format(fromDate: forecast![indexPath.row].date) , for: .normal)
-        
-        let lastItemIndex = (weatherForecast?.count)! - 1
-        if indexPath.row == lastItemIndex {
-            cell.lineImage.image = nil
-        }
-        cell.dateButton.addTarget(self, action: #selector(masterCellAction), for: .touchUpInside )
-        
-        
-        return cell
-    }
-    
     @IBAction func masterCellAction(_ sender: UIButton) {
         let buttonPosition = sender.convert(CGPoint.zero, to: self.collectionView)
         
@@ -247,54 +224,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    
-    // MARK: - TableView
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if fishType == Constants.peacefullFishNumber {
-            return peacefullFish?.count ?? 0
-        } else {
-            return predatoryFish?.count ?? 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tbcell", for: indexPath) as! FishAndBiteLevelTableViewCell
-        
-        var bitingLevel = 10
-        if peacefullFish != nil && predatoryFish != nil && weatherForecast != nil {
-            if fishType == Constants.peacefullFishNumber {
-                cell.fishImage.image = UIImage(named: (peacefullFish![indexPath.row].name + ".png"))
-                bitingLevel = fishingForecastAPI.calculateBitingLevel(peacefullFish![indexPath.row], dateIndex, weatherForecast!)
-                cell.biteLevelImage.image = fishingForecastAPI.getBitingLevelImage(bitingLevel)
-            } else {
-                cell.fishImage.image = UIImage(named: (predatoryFish![indexPath.row].name + ".png"))
-                bitingLevel = fishingForecastAPI.calculateBitingLevel(predatoryFish![indexPath.row], dateIndex, weatherForecast!)
-                cell.biteLevelImage.image = fishingForecastAPI.getBitingLevelImage(bitingLevel)
-            }
-        }        
-        return cell
-    }
-    
-    // MARK: - Animation
-    func animateTable() {
-        tableView.reloadData()
-        let cells = tableView.visibleCells
-        
-        let tableViewHeight = tableView.bounds.size.height
-        
-        for cell in cells {
-            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
-        }
-        
-        var delayCounter = 0
-        for cell in cells {
-            UIView.animate(withDuration: 1.75, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                cell.transform = CGAffineTransform.identity
-            }, completion: nil)
-            delayCounter += 1
-        }
-        
-    }
     // MARK: LoadingPopUp
     
     var container: UIView = UIView()
@@ -335,6 +264,93 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         activityIndicator.stopAnimating()
         container.removeFromSuperview()
     }
+}
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    public var screenWidth: CGFloat {
+        return UIScreen.main.bounds.height
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch screenWidth {
+        case 667:
+            return 60
+        case 736:
+            return 70
+        case 812:
+            return 60
+        default:
+            return 44
+        }
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if fishType == Constants.peacefullFishNumber {
+            return peacefullFish?.count ?? 0
+        } else {
+            return predatoryFish?.count ?? 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tbcell", for: indexPath) as! FishAndBiteLevelTableViewCell
+        
+        var bitingLevel = 10
+        
+        if peacefullFish != nil && predatoryFish != nil && weatherForecast != nil {
+            if fishType == Constants.peacefullFishNumber {
+                cell.fishImage.image = UIImage(named: (peacefullFish![indexPath.row].name + ".png"))
+                bitingLevel = fishingForecastAPI.calculateBitingLevel(peacefullFish![indexPath.row], dateIndex, weatherForecast!)
+                cell.biteLevelImage.image = fishingForecastAPI.getBitingLevelImage(bitingLevel)
+            } else {
+                cell.fishImage.image = UIImage(named: (predatoryFish![indexPath.row].name + ".png"))
+                bitingLevel = fishingForecastAPI.calculateBitingLevel(predatoryFish![indexPath.row], dateIndex, weatherForecast!)
+                cell.biteLevelImage.image = fishingForecastAPI.getBitingLevelImage(bitingLevel)
+            }
+        }
+        return cell
+    }
+    // MARK: - TableAnimation
+    func animateTable() {
+        tableView.reloadData()
+        let cells = tableView.visibleCells
+        
+        let tableViewHeight = tableView.bounds.size.height
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        
+        var delayCounter = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 1
+        }
+        
+    }
+}
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(weatherForecast?.count ?? 0)
+        return weatherForecast?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colcell", for: indexPath) as! DatesCollectionViewCell
+        
+        let forecast = weatherForecast
+        cell.dateButton.setTitle(fishingForecastAPI.format(fromDate: forecast![indexPath.row].date) , for: .normal)
+        
+        let lastItemIndex = (weatherForecast?.count)! - 1
+        if indexPath.row == lastItemIndex {
+            cell.lineImage.image = nil
+        }
+        cell.dateButton.addTarget(self, action: #selector(masterCellAction), for: .touchUpInside )
+        
+        
+        return cell
+    }
 }
 

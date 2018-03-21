@@ -40,13 +40,20 @@ struct DateManager {
     }
     
     func getDayInWeekAndDateBy(string: String) -> String {
-        let date = getDateBy(string: string)
+        guard let date = getDateBy(string: string) else {
+            return Constants.MainViewText.noData
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat  = "EEEE, d MMMM"
-        let dayInWeek = dateFormatter.string(from: date!)
-        
-        return dayInWeek
+        let dayInWeek = dateFormatter.string(from: date)
+        return dayInWeek.firstUppercased
     }
     
+}
+extension String {
+    var firstUppercased: String {
+        guard let first = first else { return "" }
+        return String(first).uppercased() + dropFirst()
+    }
 }

@@ -20,18 +20,15 @@ struct DataManager {
     }
     
     func hasData() -> Bool {
-        guard loadDailyForecast() != nil else {
+        guard let forecast = loadDailyForecast() else {
             return false
         }
-        return true
+        if forecast.count > 0 {
+            return true
+        } else {
+            return false
+        }        
     }
-    
-    //    func loadFirstDayDate() -> String? {
-    //        if hasData() {
-    //            return loadDailyForecast()[0].date
-    //        }
-    //        return nil
-    //    }
     
     func save(data: [WeatherForecast], _ cityName: String){
         
