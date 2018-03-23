@@ -3,23 +3,94 @@ import Foundation
 struct BiteLevelManager {
     
     func calculateLevel(_ fish: Fish, _ dateIndex: Int, _ month: Int, _ forecast: [WeatherForecast]) -> Int {
+        let minBiteLevel = 10
         let criticalWindSpeed = 9
-        var biteLevel = 10
+        var biteLevel = 0
         let dailyForecast = forecast[dateIndex]
+        let waterTemperature = Int(forecast[dateIndex].waterTemperature)
         
         if dailyForecast.windSpeed > criticalWindSpeed {
-            return biteLevel
+            return minBiteLevel
         }
         
+        if fish.minWaterTemperature > waterTemperature || waterTemperature > fish.maxWaterTemperature {
+            return minBiteLevel
+        }
         
         biteLevel += calculateByWind(fish, dailyForecast)
         biteLevel += calculateByMoonPhase(dailyForecast)
-        if month != 0 {
-            biteLevel += calculateByCloudinessAndPrecipitation(dailyForecast, month)
-        }
+        biteLevel += calculateByCloudinessAndPrecipitation(dailyForecast, month)
         biteLevel += calculateByPressure(fish, dateIndex, forecast)
+        biteLevel += calculateByWaterTemperature(fish, waterTemperature, month)
+        biteLevel += calculateByMonths(fish, month)
         
-        return biteLevel
+        if biteLevel != 0 {
+            return biteLevel
+        } else {
+            return minBiteLevel
+        }
+    }
+    
+    func calculateByMonths(_ fish: Fish, _ month: Int) -> Int {
+        for goodMonth in fish.goodMonthsOfBiting {
+            if goodMonth == month {
+                return 10
+            }
+        }
+        for bestMonth in fish.theBestMonthsOfBiting {
+            if bestMonth == month {
+                return 20
+            }
+        }
+        return 0
+    }
+    
+    func calculateByWaterTemperature(_ fish: Fish, _ waterTemperature: Int, _ month: Int) -> Int {
+        let min = 0
+        let max = 1
+        let season = getSeason(month)
+        
+        switch season {
+        case .spring:
+            if fish.springWaterTemperature[min] <= waterTemperature && waterTemperature <= fish.springWaterTemperature[max]{
+                return 10
+            }
+        case .summer:
+            if fish.summerWaterTemperature[min] <= waterTemperature && waterTemperature <= fish.summerWaterTemperature[max]{
+                return 10
+            }
+        case .autumn:
+            if fish.autumnWaterTemperature[min] <= waterTemperature && waterTemperature <= fish.autumnWaterTemperature[max]{
+                return 10
+            }
+        case .winter:
+            if fish.winterWaterTemperature[min] <= waterTemperature && waterTemperature <= fish.winterWaterTemperature[max]{
+                return 10
+            }
+        }
+        return 0
+    }
+    
+    func getSeason(_ month: Int) -> Season {
+        let springMonths = [03, 04, 05]
+        let summerMonths = [06, 07, 08]
+        let autumnMonths = [09, 10, 11]
+        for springMonth in springMonths {
+            if month == springMonth {
+                return .spring
+            }
+        }
+        for summerMonth in summerMonths {
+            if month == summerMonth {
+                return .summer
+            }
+        }
+        for autumnMonth in autumnMonths {
+            if month == autumnMonth {
+                return .autumn
+            }
+        }
+        return .winter
     }
     
     func calculateByPressure(_ fish: Fish, _ dateIndex: Int, _ forecast: [WeatherForecast]) -> Int {
@@ -112,11 +183,11 @@ struct BiteLevelManager {
     }
     
     func calculateByCloudinessAndPrecipitation(_ forecast: WeatherForecast, _ month: Int) -> Int {
-        let summerMonthes = [06, 07, 08]
+        let summerMonths = [06, 07, 08]
         let weather = ImageManager.getWeatherImageBy(forecast.cloudinessSymbolCode).description
         let maxSummerTemperature = 25
 
-        for summerMonth in summerMonthes {
+        for summerMonth in summerMonths {
             if summerMonth == month && forecast.maxTemperature > maxSummerTemperature {
                 switch weather {
                 case "Clear":
@@ -126,7 +197,7 @@ struct BiteLevelManager {
                 case "ThunderstormRain":
                     return 0
                 default:
-                    return 20
+                    return 10
                 }
             } else if summerMonth == month {
                 switch weather {
@@ -137,7 +208,7 @@ struct BiteLevelManager {
                 case "ThunderstormRain":
                     return 0
                 default:
-                    return 20
+                    return 10
                 }
             }
         }
@@ -155,7 +226,13 @@ struct BiteLevelManager {
         case "OvercastLightRain":
             return 0
         default:
-            return 20
+            return 10
         }
     }
+}
+enum Season {
+    case spring
+    case summer
+    case autumn
+    case winter
 }

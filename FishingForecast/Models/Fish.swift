@@ -1,7 +1,6 @@
 import Foundation
 
 struct Fish: Decodable {
-    
     var name: String
     var type: Int
     var waterType: Int
@@ -11,9 +10,10 @@ struct Fish: Decodable {
     var summerWaterTemperature: [Int]
     var autumnWaterTemperature: [Int]
     var winterWaterTemperature: [Int]
+    var goodMonthsOfBiting: [Int]
+    var theBestMonthsOfBiting: [Int]
     var description: String
     var baitAndTackle: String
-    
 }
 
 struct FishJSON: Decodable {

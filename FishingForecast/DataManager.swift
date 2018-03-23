@@ -48,7 +48,7 @@ struct DataManager {
             dailyForecast.windSpeed = Int32(forecast.windSpeed)
             dailyForecast.windDirection = forecast.windDirection
             dailyForecast.moonPhase = Int32(forecast.moonPhase)
-            dailyForecast.waterTemperature = 0
+            dailyForecast.waterTemperature = forecast.waterTemperature
             
             DataManager.saveContext()
         })

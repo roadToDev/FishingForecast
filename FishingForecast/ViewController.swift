@@ -107,8 +107,8 @@ class ViewController: UIViewController {
         // WaterTemperatureManager.waterTemperatureParse()
         //DataManager.clearData()
         
-        //let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        //print (documentsPath)
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        print (documentsPath)
         
         //        let fetchRequest: NSFetchRequest<DailyForecast> = DailyForecast.fetchRequest()
         //
@@ -121,6 +121,12 @@ class ViewController: UIViewController {
         //            print (error)
         //        }
         
+    }
+    
+    //MARK: Hide Navigation Bar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func initFish(){
@@ -141,20 +147,18 @@ class ViewController: UIViewController {
     
     func loadData() {
         if fishingForecastAPI.hasConnection() {
-           // showLoadingIndicator()
             showActivityIndicator(uiView: self.view)
             let longtitude = Constants.geoLocations[cityName]!.longitude
             let latitude = Constants.geoLocations[cityName]!.latitude
             let urlString = "http://apitest.foreca.net/?lon=\(longtitude))&lat=\(latitude))&key=2FdEUT2SIA5oFJR1WTuVMWsC1c&format=json"
-            fishingForecastAPI.parseDailyForecast(urlString, completion: { forecast in
-             //   self.hideLoadingIndicator()
+            fishingForecastAPI.parseDailyForecast(urlString, completion: { forecast in             
                 self.hideActivityIndicator()
                 self.weatherForecast = forecast
                 self.show(data: forecast, date: forecast[0].date)
                 self.reloadData()
                 
                 self.fishingForecastAPI.saveData(data: forecast, self.cityName)
-                self.fishingForecastAPI.showWaterTemp(data: forecast)
+             //   self.fishingForecastAPI.showWaterTemp(data: forecast)
             })
         } else {
             fishingForecastAPI.showError()
@@ -211,18 +215,7 @@ class ViewController: UIViewController {
         return String(temperature)
     }
     
-    @IBAction func masterCellAction(_ sender: UIButton) {
-        let buttonPosition = sender.convert(CGPoint.zero, to: self.collectionView)
-        
-        let indexPath = self.collectionView.indexPathForItem(at: buttonPosition)
-        
-        if let dailyForecast = weatherForecast {
-            let selectedCellDate = dailyForecast[(indexPath?.row)!].date
-            show(data: dailyForecast, date: selectedCellDate)
-            dateIndex = indexPath?.row ?? 0
-            self.tableView.reloadData()
-        }
-    }
+    
     
     // MARK: LoadingPopUp
     
@@ -251,7 +244,7 @@ class ViewController: UIViewController {
         label.textAlignment = NSTextAlignment.center
         label.textColor = UIColor(ciColor: .white)
         label.numberOfLines = 0
-        label.text = "Загрузка данных..."
+        label.text = Constants.MainViewText.loading
         
         
         loadingView.addSubview(activityIndicator)
@@ -340,17 +333,30 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colcell", for: indexPath) as! DatesCollectionViewCell
         
-        let forecast = weatherForecast
-        cell.dateButton.setTitle(fishingForecastAPI.format(fromDate: forecast![indexPath.row].date) , for: .normal)
+        guard let forecast = weatherForecast else {            
+            return cell
+        }
+        cell.dateButton.setTitle(fishingForecastAPI.format(fromDate: forecast[indexPath.row].date) , for: .normal)
         
-        let lastItemIndex = (weatherForecast?.count)! - 1
+        let lastItemIndex = forecast.count - 1
         if indexPath.row == lastItemIndex {
             cell.lineImage.image = nil
         }
         cell.dateButton.addTarget(self, action: #selector(masterCellAction), for: .touchUpInside )
         
-        
         return cell
+    }
+    @IBAction func masterCellAction(_ sender: UIButton) {
+        let buttonPosition = sender.convert(CGPoint.zero, to: self.collectionView)
+        
+        let indexPath = self.collectionView.indexPathForItem(at: buttonPosition)
+        
+        if let dailyForecast = weatherForecast {
+            let selectedCellDate = dailyForecast[(indexPath?.row)!].date
+            show(data: dailyForecast, date: selectedCellDate)
+            dateIndex = indexPath?.row ?? 0
+            self.tableView.reloadData()
+        }
     }
 }
 
