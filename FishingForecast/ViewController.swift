@@ -74,6 +74,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
