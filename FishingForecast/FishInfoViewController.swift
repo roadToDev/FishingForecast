@@ -21,6 +21,11 @@ class FishInfoViewController: UIViewController {
         pinBackground(to: seasonsStackView)
     
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        drawTable(seasonsStackView.frame.size.width, seasonsStackView.frame.size.height, backgroundView)
+    }
+    
     @IBAction func getInfo(_ sender: UIButton) {
         
         print("Info bar tapped")
@@ -59,9 +64,6 @@ class FishInfoViewController: UIViewController {
     }
     
     // MARK: - Draw Table(Vertical and Horizontal lines)
-    override func viewDidAppear(_ animated: Bool) {
-        drawTable(seasonsStackView.frame.size.width, seasonsStackView.frame.size.height, backgroundView)
-    }
     
     func drawVerticalLines(_ width: CGFloat, _ height: CGFloat, _ view: UIView) {
         var xCoordinates : [CGFloat] {
@@ -110,6 +112,11 @@ class FishInfoViewController: UIViewController {
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = lineColor.cgColor
         shapeLayer.lineWidth = 1.0
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 0
+        animation.duration = 1
+        shapeLayer.add(animation, forKey: "MyAnimation")
         
         view.layer.addSublayer(shapeLayer)
     }

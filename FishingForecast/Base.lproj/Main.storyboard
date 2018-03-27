@@ -522,134 +522,134 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Hqw-Xg-DzR">
-                                <rect key="frame" x="5" y="72" width="310" height="120"/>
+                                <rect key="frame" x="5" y="72" width="310" height="140"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="okun_r" translatesAutoresizingMaskIntoConstraints="NO" id="WNg-WE-CSv">
-                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="140"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jks-AM-9ti">
-                                        <rect key="frame" x="115.5" y="0.0" width="194.5" height="120"/>
+                                        <rect key="frame" x="115.5" y="0.0" width="194.5" height="140"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="A2m-kg-Yga">
-                                                <rect key="frame" x="0.0" y="0.0" width="64" height="120"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="140"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Январь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0B-38-95a">
-                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="FqH-qB-57z">
-                                                        <rect key="frame" x="0.0" y="15" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="17.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Апрель" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vly-t2-xP1">
-                                                        <rect key="frame" x="0.0" y="30" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="35" width="64" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="TGE-dq-OzH">
-                                                        <rect key="frame" x="0.0" y="45" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="52.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Июль" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euS-JI-nfT">
-                                                        <rect key="frame" x="0.0" y="60" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="70" width="64" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="hWQ-qd-C4p">
-                                                        <rect key="frame" x="0.0" y="75" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="87.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Октябрь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imN-Vj-bCo">
-                                                        <rect key="frame" x="0.0" y="90" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="105" width="64" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="usg-dl-NyK">
-                                                        <rect key="frame" x="0.0" y="105" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="122.5" width="64" height="17.5"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bm7-8E-Vtg">
-                                                <rect key="frame" x="65" y="0.0" width="64.5" height="120"/>
+                                                <rect key="frame" x="65" y="0.0" width="64.5" height="140"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Февраль" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dub-tN-mhm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="U6w-vf-1sg">
-                                                        <rect key="frame" x="0.0" y="15" width="64.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="17.5" width="64.5" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Май" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqH-Rq-KLc">
-                                                        <rect key="frame" x="0.0" y="30" width="64.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="35" width="64.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="JHg-Z3-rRV">
-                                                        <rect key="frame" x="0.0" y="45" width="64.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="52.5" width="64.5" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Август" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3D5-Sf-TwS">
-                                                        <rect key="frame" x="0.0" y="60" width="64.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="70" width="64.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="iR1-K6-qLh">
-                                                        <rect key="frame" x="0.0" y="75" width="64.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="87.5" width="64.5" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ноябрь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfD-lb-A97">
-                                                        <rect key="frame" x="0.0" y="90" width="64.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="105" width="64.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-bp-g9h">
-                                                        <rect key="frame" x="0.0" y="105" width="64.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="122.5" width="64.5" height="17.5"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XCZ-np-RSD">
-                                                <rect key="frame" x="130.5" y="0.0" width="64" height="120"/>
+                                                <rect key="frame" x="130.5" y="0.0" width="64" height="140"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Март" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRg-YE-1FM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="ygE-98-ceE">
-                                                        <rect key="frame" x="0.0" y="15" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="17.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Июнь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecc-ru-9Hs">
-                                                        <rect key="frame" x="0.0" y="30" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="35" width="64" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="f31-Lv-nuh">
-                                                        <rect key="frame" x="0.0" y="45" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="52.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сентябрь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OE-1a-jVE">
-                                                        <rect key="frame" x="0.0" y="60" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="70" width="64" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-dO-uIV">
-                                                        <rect key="frame" x="0.0" y="75" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="87.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Декабрь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4D6-ke-sTk">
-                                                        <rect key="frame" x="0.0" y="90" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="105" width="64" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="Klv-JC-E43">
-                                                        <rect key="frame" x="0.0" y="105" width="64" height="15"/>
+                                                        <rect key="frame" x="0.0" y="122.5" width="64" height="17.5"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
@@ -660,7 +660,7 @@
                                 <color key="backgroundColor" red="0.38349445129999998" green="1" blue="0.26235117749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="WNg-WE-CSv" firstAttribute="width" secondItem="Hqw-Xg-DzR" secondAttribute="width" multiplier="1:3" id="EXK-Z1-xXm"/>
-                                    <constraint firstAttribute="height" constant="120" id="WFH-QU-DjC"/>
+                                    <constraint firstAttribute="height" constant="140" id="WFH-QU-DjC"/>
                                 </constraints>
                             </stackView>
                         </subviews>
