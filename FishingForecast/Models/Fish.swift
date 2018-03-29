@@ -12,8 +12,7 @@ struct Fish: Decodable {
     var winterWaterTemperature: [Int]
     var goodMonthsOfBiting: [Int]
     var theBestMonthsOfBiting: [Int]
-    var description: String
-    var baitAndTackle: String
+    var description: [String]
 }
 
 struct FishJSON: Decodable {

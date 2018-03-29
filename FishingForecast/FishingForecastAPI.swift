@@ -83,11 +83,6 @@ struct FishingForecastAPI {
         appDelegate.showDataError()
     }
     
-    func hideLoadingView() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.hideLoadingView()
-    }
-    
     func loadDailyForecast() -> [WeatherForecast]? {
         return dataManager.loadDailyForecast()
     }    

@@ -12,18 +12,58 @@ class FishInfoViewController: UIViewController {
 
     @IBOutlet weak var seasonsStackView: UIStackView!
     
+    @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var fishImage: UIImageView!
+    
+    @IBOutlet weak var month1: UIImageView!
+    @IBOutlet weak var month2: UIImageView!
+    @IBOutlet weak var month3: UIImageView!
+    @IBOutlet weak var month4: UIImageView!
+    @IBOutlet weak var month5: UIImageView!
+    @IBOutlet weak var month6: UIImageView!
+    @IBOutlet weak var month7: UIImageView!
+    @IBOutlet weak var month8: UIImageView!
+    @IBOutlet weak var month9: UIImageView!
+    @IBOutlet weak var month10: UIImageView!
+    @IBOutlet weak var month11: UIImageView!
+    @IBOutlet weak var month12: UIImageView!    
+    
+    var fish : Fish?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.allowsSelection = false
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
+        tableView.separatorStyle = .none
+        
+        
+        
+        if let fish = fish {
+            fishImage.image = getImage(by: fish.name)
+            for name in Constants.fishNames {
+                if fish.name == name.key {
+                    self.navigationItem.title = name.value
+                }
+            }
+        }
+        
+        
         addAttributesToNavigatorBar()
         pinBackground(to: seasonsStackView)
+        
     
     }
     
     override func viewDidAppear(_ animated: Bool) {
         drawTable(seasonsStackView.frame.size.width, seasonsStackView.frame.size.height, backgroundView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.setSeasonStars()
+        })
     }
     
     @IBAction func getInfo(_ sender: UIButton) {
@@ -33,7 +73,6 @@ class FishInfoViewController: UIViewController {
     }
     
     func addAttributesToNavigatorBar() {
-        self.navigationItem.title = "Белый-Амур"
         
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = UIColor.black
@@ -128,13 +167,122 @@ class FishInfoViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
- 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    // MARK: - Draw Bite Level Stars
+    func setSeasonStars() {
+        
+        fish?.goodMonthsOfBiting.forEach({ month in
+            getSeasonMonths(month, #imageLiteral(resourceName: "one_star"))
+        })
+        fish?.theBestMonthsOfBiting.forEach({ month in
+            getSeasonMonths(month, #imageLiteral(resourceName: "two_stars"))
+        })
     }
-
+    
+    func getSeasonMonths(_ month: Int, _ image1: UIImage){
+        switch month {
+        case 1:
+            month1.image = image1
+        case 2:
+            month2.image = image1
+        case 3:
+            month3.image = image1
+        case 4:
+            month4.image = image1
+        case 5:
+            month5.image = image1
+        case 6:
+            month6.image = image1
+        case 7:
+            month7.image = image1
+        case 8:
+            month8.image = image1
+        case 9:
+            month9.image = image1
+        case 10:
+            month10.image = image1
+        case 11:
+            month11.image = image1
+        case 12:
+            month12.image = image1
+        default: break
+        }
+    }
+    
 }
+// MARK: - TableView
+extension FishInfoViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FishInfoTableViewCell
+        if indexPath.row == 0 {
+            cell.infoDescrLabel.text = "Описание"
+        } else {
+            cell.infoDescrLabel.text = "Способы ловли и наживка"
+        }
+        if let description = fish?.description[indexPath.row] {
+            cell.descriptionLabel.text = description + "\n"
+            cell.descriptionLabel.textColor = .white
+        }
+        
+        return cell
+    }
+    
+    // MARK: - Fish Image
+    
+    func getImage(by name: String) -> UIImage {
+        switch name {
+        case "karas":
+            return #imageLiteral(resourceName: "karas_r")
+        case "krasnoperka":
+            return #imageLiteral(resourceName: "krasnoperka_r")
+        case "karp":
+            return #imageLiteral(resourceName: "karp_r")
+        case "leshch":
+            return #imageLiteral(resourceName: "leshch_r")
+        case "plotva":
+            return #imageLiteral(resourceName: "plotva_r")
+        case "sazan":
+            return #imageLiteral(resourceName: "sazan_r")
+        case "amur":
+            return #imageLiteral(resourceName: "amur_r")
+        case "lin":
+            return #imageLiteral(resourceName: "lin_r")
+        case "tolstolob":
+            return #imageLiteral(resourceName: "tolstolob_r")
+        case "podust":
+            return #imageLiteral(resourceName: "podust_r")
+        case "golavl":
+            return #imageLiteral(resourceName: "golavl_r")
+        case "elec":
+            return #imageLiteral(resourceName: "elec_r")
+        case "shchuka":
+            return #imageLiteral(resourceName: "shchuka_r")
+        case "sudak":
+            return #imageLiteral(resourceName: "sudak_r")
+        case "okun":
+            return #imageLiteral(resourceName: "okun_r")
+        case "som":
+            return #imageLiteral(resourceName: "som_r")
+        case "forel":
+            return #imageLiteral(resourceName: "forel_r")
+        case "nalim":
+            return #imageLiteral(resourceName: "nalim_r")
+        case "jereh":
+            return #imageLiteral(resourceName: "jereh_r")
+        case "yaz":
+            return #imageLiteral(resourceName: "yaz_r")
+        default:
+            return #imageLiteral(resourceName: "forel_r")
+        }
+    }
+    
+}
+
 public extension UIView {
     public func pin(to view: UIView) {
         NSLayoutConstraint.activate([

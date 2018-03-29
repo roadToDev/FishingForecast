@@ -1,4 +1,3 @@
-//
 import UIKit
 import CoreData
 
@@ -20,13 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = errorView
         window?.makeKeyAndVisible()
-    }
-    func hideLoadingView() {
-        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let view = mainStoryBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        
-        window?.rootViewController = view
-        window?.makeKeyAndVisible()        
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

@@ -102,16 +102,27 @@ struct Constants {
         return coordinates
     }
     
-//    struct MoonPhases {
-//        static let newMoon =  "Новая луна"
-//        static let waxingGrescent = "Молодая луна"
-//        static let firstQuarter =  "Первая четверть"
-//        static let waxingGibbous = "Прибывающая луна"
-//        static let fullMoon = "Полная луна"
-//        static let waningGibbous = "Убывающая луна"
-//        static let lastQuarter =  "Последняя четверть"
-//        static let waningGrescent =  "Старая луна"
-//    }
+    static let fishNames = [ "karas" : "Карась",
+                             "krasnoperka" : "Красноперка",
+                             "karp" : "Карп",
+                             "leshch" : "Лещ",
+                             "plotva" : "Плотва",
+                             "sazan" : "Сазан",
+                             "amur" : "Белый Амур",
+                             "lin" : "Линь",
+                             "tolstolob" : "Толстолобик",
+                             "podust" : "Подуст",
+                             "golavl" : "Голавль",
+                             "elec" : "Елец",
+                             "shchuka" : "Щука",
+                             "sudak" : "Судак",
+                             "okun" : "Окунь",
+                             "som" : "Сом",
+                             "forel" : "Форель",
+                             "nalim" : "Налим",
+                             "yaz" : "Язь",
+                             "jereh" : "Жерех"
+    ]
     static let moonPhases = [
         0 ... 45 : "Новолуние",
         45 ... 90 : "Молодая луна",

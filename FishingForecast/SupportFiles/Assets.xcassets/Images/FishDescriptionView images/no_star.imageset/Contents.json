@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "empty_sar.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "empty_sar-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "окунь.png",
+      "filename" : "empty_sar-2.png",
       "scale" : "3x"
     }
   ],

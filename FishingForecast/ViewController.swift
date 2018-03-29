@@ -324,6 +324,26 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
     }
+    // MARK: - FishInfo Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FishInfoSegue" {
+            let fishController = segue.destination as? FishInfoViewController
+            
+            guard let selectedCell = sender as? FishAndBiteLevelTableViewCell else {
+                fatalError("Unexpected destination: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            if fishType == Constants.predatoryFishNumber {
+                fishController?.fish = predatoryFish?[indexPath.row]
+            } else {
+                fishController?.fish = peacefullFish?[indexPath.row]
+            }            
+        }
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {

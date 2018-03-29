@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="bIv-3q-XbL">
-                                <rect key="frame" x="10" y="72" width="291" height="131"/>
+                                <rect key="frame" x="10" y="28" width="291" height="131"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qTZ-Gt-6XU">
                                         <rect key="frame" x="0.0" y="0.0" width="186" height="131"/>
@@ -167,7 +167,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="tUr-yH-mSg">
-                                <rect key="frame" x="10" y="211" width="300" height="49"/>
+                                <rect key="frame" x="10" y="167" width="300" height="49"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="d9S-7a-WLA">
                                         <rect key="frame" x="0.0" y="0.0" width="119" height="49"/>
@@ -252,27 +252,27 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="zmm-ih-RiN" userLabel="line 1">
-                                <rect key="frame" x="5" y="268" width="310" height="1"/>
+                                <rect key="frame" x="5" y="224" width="310" height="1"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftarrow" translatesAutoresizingMaskIntoConstraints="NO" id="Fw8-Af-wPU">
-                                <rect key="frame" x="15" y="268" width="5" height="30"/>
+                                <rect key="frame" x="15" y="224" width="5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="5" id="9Ui-rD-3CP"/>
                                     <constraint firstAttribute="height" constant="30" id="jAb-ex-fUD"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightarrow" translatesAutoresizingMaskIntoConstraints="NO" id="VUp-Po-0c4">
-                                <rect key="frame" x="300" y="268" width="5" height="30"/>
+                                <rect key="frame" x="300" y="224" width="5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="5" id="Pbd-yP-Zln"/>
                                     <constraint firstAttribute="height" constant="30" id="RBu-PC-9Nt"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="hx3-Sf-FJ0" userLabel="line 2">
-                                <rect key="frame" x="5" y="297" width="310" height="1"/>
+                                <rect key="frame" x="5" y="253" width="310" height="1"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VdS-kB-KtM">
-                                <rect key="frame" x="28" y="268" width="264" height="30"/>
+                                <rect key="frame" x="28" y="224" width="264" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="X1S-LX-uk9"/>
@@ -350,7 +350,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8BW-qu-TFm">
-                                <rect key="frame" x="5" y="305" width="307" height="28"/>
+                                <rect key="frame" x="5" y="261" width="307" height="28"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="wcl-y9-vCJ">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="28"/>
@@ -392,10 +392,10 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aRj-kp-3oM">
-                                <rect key="frame" x="5" y="331" width="305" height="196"/>
+                                <rect key="frame" x="5" y="287" width="305" height="240"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tbcell" id="6dr-Sj-ca9" customClass="FishAndBiteLevelTableViewCell" customModule="FishingForecast" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tbcell" id="6dr-Sj-ca9" customClass="FishAndBiteLevelTableViewCell" customModule="FishingForecast" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="305" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6dr-Sj-ca9" id="iaK-3I-beb">
@@ -403,10 +403,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="L1d-Uv-fbK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="305" height="49.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="305" height="50"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="gustera" translatesAutoresizingMaskIntoConstraints="NO" id="ZVu-Of-YDZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="49.5"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="forel" translatesAutoresizingMaskIntoConstraints="NO" id="ZVu-Of-YDZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="50"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lvl10" translatesAutoresizingMaskIntoConstraints="NO" id="aPP-V5-h8w">
                                                             <rect key="frame" x="102" y="17.5" width="203" height="15"/>
@@ -426,14 +426,14 @@
                                         <connections>
                                             <outlet property="biteLevelImage" destination="aPP-V5-h8w" id="BQu-yQ-93m"/>
                                             <outlet property="fishImage" destination="ZVu-Of-YDZ" id="Lpm-QF-1jh"/>
-                                            <segue destination="5cw-tG-Ujz" kind="show" id="Jyy-RA-ppU"/>
+                                            <segue destination="5cw-tG-Ujz" kind="show" identifier="FishInfoSegue" id="Jyy-RA-ppU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foreca" translatesAutoresizingMaskIntoConstraints="NO" id="bHa-sd-2nC">
-                                <rect key="frame" x="263" y="69" width="49" height="11"/>
+                                <rect key="frame" x="263" y="25" width="49" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="6To-KY-Bnx"/>
                                     <constraint firstAttribute="height" constant="11" id="TZS-Mp-Yj9"/>
@@ -522,7 +522,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Hqw-Xg-DzR">
-                                <rect key="frame" x="5" y="72" width="310" height="140"/>
+                                <rect key="frame" x="5" y="28" width="310" height="140"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="okun_r" translatesAutoresizingMaskIntoConstraints="NO" id="WNg-WE-CSv">
                                         <rect key="frame" x="0.0" y="0.0" width="103.5" height="140"/>
@@ -539,7 +539,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="FqH-qB-57z">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="FqH-qB-57z">
                                                         <rect key="frame" x="0.0" y="17.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Апрель" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vly-t2-xP1">
@@ -548,7 +548,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="TGE-dq-OzH">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="TGE-dq-OzH">
                                                         <rect key="frame" x="0.0" y="52.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Июль" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euS-JI-nfT">
@@ -557,7 +557,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="hWQ-qd-C4p">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="hWQ-qd-C4p">
                                                         <rect key="frame" x="0.0" y="87.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Октябрь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imN-Vj-bCo">
@@ -566,7 +566,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="usg-dl-NyK">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="usg-dl-NyK">
                                                         <rect key="frame" x="0.0" y="122.5" width="64" height="17.5"/>
                                                     </imageView>
                                                 </subviews>
@@ -580,7 +580,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="U6w-vf-1sg">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="U6w-vf-1sg">
                                                         <rect key="frame" x="0.0" y="17.5" width="64.5" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Май" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqH-Rq-KLc">
@@ -589,7 +589,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="JHg-Z3-rRV">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="JHg-Z3-rRV">
                                                         <rect key="frame" x="0.0" y="52.5" width="64.5" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Август" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3D5-Sf-TwS">
@@ -598,7 +598,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="iR1-K6-qLh">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="iR1-K6-qLh">
                                                         <rect key="frame" x="0.0" y="87.5" width="64.5" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ноябрь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfD-lb-A97">
@@ -607,7 +607,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-bp-g9h">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-bp-g9h">
                                                         <rect key="frame" x="0.0" y="122.5" width="64.5" height="17.5"/>
                                                     </imageView>
                                                 </subviews>
@@ -621,7 +621,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="ygE-98-ceE">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="ygE-98-ceE">
                                                         <rect key="frame" x="0.0" y="17.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Июнь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecc-ru-9Hs">
@@ -630,7 +630,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="f31-Lv-nuh">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="f31-Lv-nuh">
                                                         <rect key="frame" x="0.0" y="52.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сентябрь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OE-1a-jVE">
@@ -639,7 +639,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-dO-uIV">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-dO-uIV">
                                                         <rect key="frame" x="0.0" y="87.5" width="64" height="17.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Декабрь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4D6-ke-sTk">
@@ -648,7 +648,7 @@
                                                         <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one_star" translatesAutoresizingMaskIntoConstraints="NO" id="Klv-JC-E43">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_star" translatesAutoresizingMaskIntoConstraints="NO" id="Klv-JC-E43">
                                                         <rect key="frame" x="0.0" y="122.5" width="64" height="17.5"/>
                                                     </imageView>
                                                 </subviews>
@@ -663,26 +663,89 @@
                                     <constraint firstAttribute="height" constant="140" id="WFH-QU-DjC"/>
                                 </constraints>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bgF-ah-SI9">
+                                <rect key="frame" x="5" y="188" width="310" height="372"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="orC-ac-LQV" customClass="FishInfoTableViewCell" customModule="FishingForecast" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="310" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="orC-ac-LQV" id="qdn-ei-ZE3">
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acf-rM-B1S">
+                                                    <rect key="frame" x="0.0" y="20" width="310" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tE1-MU-hkU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="GvI-TX-yNt"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="acf-rM-B1S" secondAttribute="bottom" id="2Ly-Qi-acz"/>
+                                                <constraint firstItem="tE1-MU-hkU" firstAttribute="leading" secondItem="qdn-ei-ZE3" secondAttribute="leading" id="8eO-TD-xR4"/>
+                                                <constraint firstItem="acf-rM-B1S" firstAttribute="leading" secondItem="qdn-ei-ZE3" secondAttribute="leading" id="N9P-sC-U1J"/>
+                                                <constraint firstAttribute="trailing" secondItem="acf-rM-B1S" secondAttribute="trailing" id="SiI-2X-luD"/>
+                                                <constraint firstAttribute="trailing" secondItem="tE1-MU-hkU" secondAttribute="trailing" id="YPX-Yz-Skj"/>
+                                                <constraint firstItem="acf-rM-B1S" firstAttribute="top" secondItem="qdn-ei-ZE3" secondAttribute="top" constant="20" id="oMZ-Q3-HCc"/>
+                                                <constraint firstItem="tE1-MU-hkU" firstAttribute="top" secondItem="qdn-ei-ZE3" secondAttribute="top" id="tU8-uC-k6Z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="acf-rM-B1S" id="Ayb-vl-Dfb"/>
+                                            <outlet property="infoDescrLabel" destination="tE1-MU-hkU" id="y1u-LK-ZbY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Qss-xN-soy" firstAttribute="leading" secondItem="UMq-K5-lAo" secondAttribute="leading" id="6aV-ct-jFB"/>
                             <constraint firstAttribute="bottom" secondItem="Qss-xN-soy" secondAttribute="bottom" id="8aI-b4-7F3"/>
                             <constraint firstItem="Qss-xN-soy" firstAttribute="trailing" secondItem="UMq-K5-lAo" secondAttribute="trailing" id="8dM-N8-t31"/>
+                            <constraint firstItem="UMq-K5-lAo" firstAttribute="bottom" secondItem="bgF-ah-SI9" secondAttribute="bottom" constant="8" id="NFs-8A-zoN"/>
                             <constraint firstItem="UMq-K5-lAo" firstAttribute="trailing" secondItem="Hqw-Xg-DzR" secondAttribute="trailing" constant="5" id="T2d-Pu-fo5"/>
                             <constraint firstItem="Qss-xN-soy" firstAttribute="top" secondItem="uVg-R8-z3I" secondAttribute="top" id="guu-75-GFS"/>
+                            <constraint firstItem="bgF-ah-SI9" firstAttribute="top" secondItem="Hqw-Xg-DzR" secondAttribute="bottom" constant="20" id="icd-ji-TaD"/>
+                            <constraint firstItem="bgF-ah-SI9" firstAttribute="leading" secondItem="UMq-K5-lAo" secondAttribute="leading" constant="5" id="id6-hA-O8U"/>
+                            <constraint firstItem="UMq-K5-lAo" firstAttribute="trailing" secondItem="bgF-ah-SI9" secondAttribute="trailing" constant="5" id="wU9-Gl-Rcz"/>
                             <constraint firstItem="Hqw-Xg-DzR" firstAttribute="leading" secondItem="UMq-K5-lAo" secondAttribute="leading" constant="5" id="yUu-Iu-eg6"/>
                             <constraint firstItem="Hqw-Xg-DzR" firstAttribute="top" secondItem="UMq-K5-lAo" secondAttribute="top" constant="8" id="znq-Ii-DHg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UMq-K5-lAo"/>
                     </view>
                     <connections>
+                        <outlet property="fishImage" destination="WNg-WE-CSv" id="cgq-vM-E34"/>
+                        <outlet property="month1" destination="FqH-qB-57z" id="oJn-3D-jOd"/>
+                        <outlet property="month10" destination="usg-dl-NyK" id="tEp-L0-uZI"/>
+                        <outlet property="month11" destination="CzB-bp-g9h" id="ed2-E5-Awh"/>
+                        <outlet property="month12" destination="Klv-JC-E43" id="9by-cq-LCM"/>
+                        <outlet property="month2" destination="U6w-vf-1sg" id="edx-WE-fS0"/>
+                        <outlet property="month3" destination="ygE-98-ceE" id="RqG-or-Dm7"/>
+                        <outlet property="month4" destination="TGE-dq-OzH" id="Y9K-4g-SBg"/>
+                        <outlet property="month5" destination="JHg-Z3-rRV" id="K8g-WT-MNS"/>
+                        <outlet property="month6" destination="f31-Lv-nuh" id="TEk-7q-Ky1"/>
+                        <outlet property="month7" destination="hWQ-qd-C4p" id="jxm-Ls-rnc"/>
+                        <outlet property="month8" destination="iR1-K6-qLh" id="IRu-Z3-hRS"/>
+                        <outlet property="month9" destination="3DL-dO-uIV" id="Ma4-UQ-7gD"/>
                         <outlet property="seasonsStackView" destination="Jks-AM-9ti" id="EPM-2h-aUb"/>
+                        <outlet property="tableView" destination="bgF-ah-SI9" id="Ycy-0R-7cu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXX-MP-fpK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1232.8" y="112.3152709359606"/>
+            <point key="canvasLocation" x="1231.875" y="111.97183098591549"/>
         </scene>
         <!--Error View Controller-->
         <scene sceneID="V1W-ot-efa">
@@ -861,7 +924,7 @@
         <image name="close_button" width="42" height="42"/>
         <image name="empty" width="200" height="50"/>
         <image name="foreca" width="250" height="55"/>
-        <image name="gustera" width="200" height="112"/>
+        <image name="forel" width="200" height="112"/>
         <image name="hamburgerbutton" width="30" height="28"/>
         <image name="leftarrow" width="17" height="25"/>
         <image name="line" width="312" height="1"/>
@@ -870,8 +933,8 @@
         <image name="lvl10" width="203" height="15"/>
         <image name="moonphase" width="19" height="19"/>
         <image name="nighttemperature" width="19" height="19"/>
-        <image name="okun_r" width="130" height="123"/>
-        <image name="one_star" width="46" height="16"/>
+        <image name="no_star" width="46" height="16"/>
+        <image name="okun_r" width="93" height="92"/>
         <image name="peacefullfishbutton" width="30" height="28"/>
         <image name="precipitation" width="19" height="19"/>
         <image name="predatoryfishbutton" width="30" height="28"/>
@@ -885,6 +948,6 @@
         <image name="winddirection" width="19" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gYo-hE-723"/>
+        <segue reference="rI0-Ju-nFg"/>
     </inferredMetricsTieBreakers>
 </document>
