@@ -50,7 +50,6 @@ class NearestLocation : NSObject, CLLocationManagerDelegate {
             
             manager.delegate = self
             manager.desiredAccuracy = kCLLocationAccuracyKilometer
-          //  manager.startUpdatingLocation()
             manager.requestLocation()
         
             if let currentLocation = manager.location {
@@ -58,28 +57,29 @@ class NearestLocation : NSObject, CLLocationManagerDelegate {
                 return currentLocation
 
             } else {
-                return nil
-                
+                return nil                
             }
            
-//            if (currentLocation?.timestamp)! <= Date() {
-//                print(currentLocation?.timestamp)
-//                print(Date())
-//                manager.startUpdatingLocation()
-//                currentLocation = manager.location
-//            }
-          //  return currentLocation
         }
         return nil
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-       // manager.stopUpdatingLocation()
-        print(manager.location)
+        
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            manager.requestLocation()
+     //   case .authorizedAlways, .authorizedWhenInUse:
+      //      cityLocationSearch()
+        default:
+            print("Needs location permission apply")
+        }
     }
     
 }

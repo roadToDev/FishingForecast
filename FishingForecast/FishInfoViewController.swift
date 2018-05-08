@@ -220,9 +220,9 @@ extension FishInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FishInfoTableViewCell
         if indexPath.row == 0 {
-            cell.infoDescrLabel.text = "Описание"
+            cell.infoDescrLabel.text = "Места обитания"
         } else {
-            cell.infoDescrLabel.text = "Способы ловли и наживка"
+            cell.infoDescrLabel.text = "Наживка"
         }
         if let description = fish?.description[indexPath.row] {
             cell.descriptionLabel.text = description + "\n"

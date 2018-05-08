@@ -16,8 +16,7 @@ struct WaterTemperatureManager {
             html = try String(contentsOf: myURL, encoding: .utf8)
         } catch {
             print (error)
-        }
-        
+        }        
         
         do {
             let doc = try SwiftSoup.parse(html)
@@ -58,7 +57,7 @@ struct WaterTemperatureManager {
             if waterTemperature.count == 0 {
                 waterTemperature.append(Int(firstDayWaterTemperature)!)
             } else {
-                let lastElement = waterTemperature[waterTemperature.count - 1]
+                let lastElement = waterTemperature[waterTemperature.count - 1]                
                 if (Int(dailyTemperature.maxTemperature) - lastElement) >= 5 {
                     waterTemperature.append(lastElement + 1)
                 } else if (Int(dailyTemperature.maxTemperature) - lastElement) >= 2  {
